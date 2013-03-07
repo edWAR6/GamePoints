@@ -15,12 +15,17 @@ button,
 input,
 select,
 textarea {
-    color: #222;
+    color: #234D74;
 }
 
 body {
     font-size: 1em;
     line-height: 1.4;
+    width: 1000px;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    border: solid 2px #9FC5E8; 
 }
 
 /*
@@ -78,6 +83,18 @@ textarea {
     resize: vertical;
 }
 
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"],
+input[type="checkbox"] {
+    background-color: #9FC5E8;
+}
+
+input{
+    border: 2px solid #9FC5E8;
+}
+
 /* ==========================================================================
    Chrome Frame prompt
    ========================================================================== */
@@ -93,35 +110,43 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
-.container{
-    width: 1000px;
-    margin-top: 10px;
-    margin-left: auto;
-    margin-right: auto;
-    border: solid 2px #CFE2F3; 
-}
 
 /* ADMIN */
+
 .adminlogo{
     background: url("../img/g.png") repeat scroll 0 0 / 100% auto transparent;
     width: 100px;
     height: 100px;
 }
 
-#adminlogin{
-    border: 2px solid #CFE2F3;
-    width: 100px;
-    height: 200px;
-    display: inline-block;
-    margin-left: 200px;
+#index article{
+    min-height: 600px;
 }
 
-#admincontent{
-    border: 2px solid #CFE2F3;
-    width: 100px;
-    height: 200px;
+#index section,
+#index aside{
     display: inline-block;
+    border: 2px solid #9FC5E8;
+    padding: 10px;
+    vertical-align: middle;
+}
+
+#index section{
+    width: 200px;
+    height: 200px;
+    margin-left: 100px;
+}
+
+#index aside{
+    height: 500px;
     margin-left: 200px;
+    width: 400px;
+    background-color: #CFE2F3;
+}
+
+#index input[type="text"],
+#index input[type="password"]{
+    max-width: 180px;
 }
 
 #underConstruction{
@@ -129,6 +154,13 @@ textarea {
   height: 30em;
   width: 73.5em;
 }
+
+
+
+
+
+
+
 
 
 
