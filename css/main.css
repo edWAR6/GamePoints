@@ -112,9 +112,11 @@ input{
 
 
 /* ADMIN */
+/* Index */
 
 .adminlogo{
-    background: url("../img/g.png") repeat scroll 0 0 / 100% auto transparent;
+    background: url("../img/g.png") no-repeat 0 0 transparent;
+    background-size: 100%;
     width: 100px;
     height: 100px;
 }
@@ -148,6 +150,53 @@ input{
 #index input[type="password"]{
     max-width: 180px;
 }
+
+#index section input{
+    margin-bottom: 10px;
+}
+
+/* Menu */
+
+#menu header div{
+    display: inline-block;
+}
+#menu header img{
+    vertical-align: top;
+}
+#menu #user{
+    float: right;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+#menu header div h3,
+#menu header div h4{
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+#menu nav{
+    max-width: 100px;
+    display: inline-block;
+}
+
+#menu nav a{
+    display: block;
+}
+
+#menu section{
+    display: inline-block;
+
+}
+
+
+
+
+
+
+
+
+
+
 
 #underConstruction{
   background: url("/under-construction.jpg") no-repeat scroll 0 0 / 100% auto transparent;
