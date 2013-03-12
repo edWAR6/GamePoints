@@ -167,6 +167,10 @@ input{
     float: right;
     margin-right: 10px;
     margin-top: 10px;
+    border: 2px solid #9FC5E8;
+}
+#menu #user img{
+    border-right: 2px solid #9FC5E8;
 }
 #menu header div h3,
 #menu header div h4{
@@ -175,17 +179,22 @@ input{
 }
 
 #menu nav{
-    max-width: 100px;
+    background-color: #CFE2F3;
+    border: 2px solid #9FC5E8;
     display: inline-block;
+    width: 150px;
+    margin-left: 10px;
 }
-
+#menu nav ul{
+    list-style: inherit;
+}
 #menu nav a{
     display: block;
 }
 
 #menu section{
     display: inline-block;
-
+    width: 800px;
 }
 
 
