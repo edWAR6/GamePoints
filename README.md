@@ -1,4 +1,0 @@
-GamePoints
-==========
-
-Private website development
