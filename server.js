@@ -63,7 +63,7 @@ route.get('/js/plugins.js', function(req, res) {
     });
 });
 
-route.get('/js/main.js', function(req, res) {
+route.get('/js/admin.js', function(req, res) {
     fs.readFile('js/main.js', function(error, js){
       res.writeHead(200, {'Content-Type': 'application/javascript','Content-Length':js.length});
       res.write(js);
@@ -82,8 +82,8 @@ route.get('/admin', function(req, res) {
     });
 });
 
-route.get('/admin/menu', function(req, res) {
-    fs.readFile('admin/menu.html', function(error, html){
+route.get('/admin/games', function(req, res) {
+    fs.readFile('admin/games.html', function(error, html){
       res.writeHead(200, {'Content-Type': 'text/html','Content-Length':html.length});
       res.write(html);
       res.end();
