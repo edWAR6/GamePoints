@@ -10,6 +10,7 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
 
+        <link rel="stylesheet" href="css/jquery-ui-1.10.2.css">
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <style>
             body {
@@ -40,7 +41,7 @@
                     <a class="brand" href="#">Game Points</a>
                     <div class="nav-collapse collapse">
                         <ul class="nav">
-                            <li class="active"><a href="#">Inicio</a></li>
+                            <li class="active"><a class="home" href="#">Inicio</a></li>
                             <li><a href="#contact">Contacto</a></li>
                             <li><a href="#about">Mis juegos</a></li>
                             <li class="dropdown">
@@ -65,17 +66,17 @@
             </div>
         </div>
 
-        <div id="home" class="container">
+        <article id="home" class="container active">
 
             <!-- Main hero unit for a primary marketing message or call to action -->
-            <div class="hero-unit">
+            <header class="hero-unit">
                 <h1>Game Points!</h1>
                 <p>Bienvenido al portal de administración de Game Points Costa Rica. En este portal podrás solicitar información sobre cómo puedes ser parte del gran mundo de Game Points. Si ya eres socio, consulta el estado de sus juegos, solicita pagos y administra tu inventario. Para iniciar en Game Points como un socio, por favor complete el formulario de registro.</p>
                 <p><a id="signup" class="btn btn-primary btn-large">Registrese &raquo;</a></p>
-            </div>
+            </header>
 
             <!-- Example row of columns -->
-            <div class="row">
+            <section class="row">
                 <div class="span4">
                     <h2>Quienes somos?</h2>
                     <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
@@ -91,7 +92,7 @@
                     <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
                     <p><a class="btn" href="#">Ver detalles &raquo;</a></p>
                 </div>
-            </div>
+            </section>
 
             <hr>
 
@@ -99,33 +100,57 @@
                 <p>&copy; Game Points 2013</p>
             </footer>
 
-        </div> <!-- /home -->
+        </article> <!-- /home -->
 
-        <div id="signup" class="container">
-            <div class="hero-unit">
-                <h1>Registrese</h1>
-                <p>Bienvenido al portal de administración de Game Points Costa Rica. En este portal podrás solicitar información sobre cómo puedes ser parte del gran mundo de Game Points. Si ya eres socio, consulta el estado de sus juegos, solicita pagos y administra tu inventario. Para iniciar en Game Points como un socio, por favor complete el formulario de registro.</p>
-                <p><a class="btn btn-primary btn-large">Registrese &raquo;</a></p>
+        <article id="signupContainer" class="container hiden">
+            <header class="hero-unit">
+                <h1>Registro</h1>
+                <p>Ingrese sus datos para aplicar como socio de Game Points.</p>
+            </header>
+            <div class="clearfix">
+                <section>
+                    <form action="administrator" autocomplete="on">
+                        <input class="span4" type="text" placeholder="Nombre">
+                        <input class="span4" type="email" placeholder="Email">
+                        <input class="span4" type="password" placeholder="Contraseña">
+                        <input class="span4" type="tel" placeholder="Teléfono">
+                        <p>Cuentenos sobre usted, su negocio o su colección de video juegos.</p>
+                        <textarea class="span4" placeholder="Comentario" cols="30"></textarea>
+                        <br>
+                        <button type="submit" class="btn">Hacer solicitud</button>
+                    </form>
+                </section>
+
+                <aside>
+                    <h3>¿Cómo funciona?</h3>
+                    <img src="img/me.png">
+                    <p>Ingrese sus datos personales en el formulario para aplicar como socio de Game Points. En cuestión de unas horas recibirá un correo electrónico o una llamada telefónica en la que un representante de Game Points negociará con usted los términos del negocio.</p>
+                    <p>En caso de llegarse a un acuerdo tendrá acceso a autenticarse en el sitio de administración y hacer uso de todos los beneficios de Game Points.</p>
+                </aside>
             </div>
-
             <hr>
 
             <footer>
                 <p>&copy; Game Points 2013</p>
             </footer>
-        </div> <!-- /signup -->
+        </article> <!-- /signup -->
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+
+        <script src="//code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+        <script type="text/javascript">window.jQuery.ui || document.write('<script src="js/vendor/jquery-ui-1.10.2.js"><\/script>')</script>
 
         <script src="js/vendor/bootstrap.min.js"></script>
 
         <script src="js/plugins.js"></script>
         <script src="js/admin.js"></script>
 
-        <script>
+        <script type="text/javascript">
             admin.initialize();
+        </script>
 
+        <script>
             var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
             (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
             g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';

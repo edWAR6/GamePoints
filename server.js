@@ -5,6 +5,14 @@ var route = router();
 
 // css files
 
+route.get('/css/jquery-ui-1.10.2.css', function(req, res) {
+    fs.readFile('css/jquery-ui-1.10.2.css', function(error, css){
+      res.writeHead(200, {'Content-Type': 'text/css','Content-Length':css.length});
+      res.write(css);
+      res.end();
+    });
+});
+
 route.get('/css/bootstrap.min.css', function(req, res) {
     fs.readFile('css/bootstrap.min.css', function(error, css){
       res.writeHead(200, {'Content-Type': 'text/css','Content-Length':css.length});
@@ -47,6 +55,14 @@ route.get('/js/vendor/jquery-1.9.1.min.js', function(req, res) {
     });
 });
 
+route.get('/js/vendor/jquery-ui-1.10.2.js', function(req, res) {
+    fs.readFile('js/vendor/jquery-ui-1.10.2.js', function(error, js){
+      res.writeHead(200, {'Content-Type': 'application/javascript','Content-Length':js.length});
+      res.write(js);
+      res.end();
+    });
+});
+
 route.get('/js/vendor/bootstrap.min.js', function(req, res) {
     fs.readFile('js/vendor/bootstrap.min.js', function(error, js){
       res.writeHead(200, {'Content-Type': 'application/javascript','Content-Length':js.length});
@@ -64,7 +80,7 @@ route.get('/js/plugins.js', function(req, res) {
 });
 
 route.get('/js/admin.js', function(req, res) {
-    fs.readFile('js/main.js', function(error, js){
+    fs.readFile('js/admin.js', function(error, js){
       res.writeHead(200, {'Content-Type': 'application/javascript','Content-Length':js.length});
       res.write(js);
       res.end();
