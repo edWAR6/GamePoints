@@ -1,7 +1,26 @@
+/* ==========================================================================
+Game Point's custom styles
+========================================================================== */
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 a {
   color: #00b7ff;
+}
+.hiden {
+  display: none;
+}
+/* ADMIN */
+/* Index */
+/* Signup */
+@media only screen and (min-width: 768px) {
+  #signupContainer section {
+    float: left;
+    width: 57%;
+  }
+  #signupContainer aside {
+    float: right;
+    width: 43%;
+  }
 }

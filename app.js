@@ -31,11 +31,11 @@ if ('development' == app.get('env')) {
 app.get('/', routes.index);
 app.get('/users', user.list);
 
-app.get('/', function(req, res){
-  res.render('index', {
-    title: 'Home'
-  });
-});
+// app.get('/', function(req, res){
+//   res.render('index', {
+//     title: 'Home'
+//   });
+// });
 
 app.get('/about', function(req, res){
   res.render('about', {
