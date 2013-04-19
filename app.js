@@ -29,6 +29,9 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.index);
+app.get('/admin', routes.admin);
+
+
 app.get('/users', user.list);
 
 // app.get('/', function(req, res){
