@@ -1,5 +1,58 @@
-extends ../layout
+extends adminlayout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  article#home.container.active
+    header.hero-unit
+      h1 Game Points!
+      p
+        | Bienvenido al portal de administración de Game Points Costa Rica. En este portal podrás solicitar información sobre cómo puedes ser parte del gran mundo de Game Points. Si ya eres socio, consulta el estado de sus juegos, solicita pagos y administra tu inventario. Para iniciar en Game Points como un socio, por favor complete el formulario de registro.
+      p
+        a#signup.btn.btn-primary.btn-large Registrese »
+
+    section.row
+      .span4
+        h2 Quienes somos?
+        p
+          | Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+        p
+          a.btn(href='/admin/whoweare') Ver detalles »
+      .span4
+        h2 Cómo funciona?
+        p
+          | Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+        p
+          a.btn(href='#') Ver detalles »
+      .span4
+        h2 Cómo participo?
+        p
+          | Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
+        p
+          a.btn(href='#') Ver detalles »
+    hr
+    footer
+      p © Game Points 2013
+  article#signupContainer.container.hiden
+    header.hero-unit
+      h1 Registro
+      p Ingrese sus datos para aplicar como socio de Game Points.
+    .clearfix
+      section
+        form(action='administrator', autocomplete='on')
+          input.span4(type='text', placeholder='Nombre')
+          input.span4(type='email', placeholder='Email')
+          input.span4(type='password', placeholder='Contraseña')
+          input.span4(type='tel', placeholder='Teléfono')
+          p Cuentenos sobre usted, su negocio o su colección de video juegos.
+          textarea.span4(placeholder='Comentario', cols='30')
+          br
+          button.btn(type='submit') Hacer solicitud
+      aside
+        h3 ¿Cómo funciona?
+        img(src='../Ximages/me.png')
+        p
+          | Ingrese sus datos personales en el formulario para aplicar como socio de Game Points. En cuestión de unas horas recibirá un correo electrónico o una llamada telefónica en la que un representante de Game Points negociará con usted los términos del negocio.
+        p
+          | En caso de llegarse a un acuerdo tendrá acceso a autenticarse en el sitio de administración y hacer uso de todos los beneficios de Game Points.
+    hr
+    footer
+      p © Game Points 2013

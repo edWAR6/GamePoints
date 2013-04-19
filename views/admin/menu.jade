@@ -1,0 +1,35 @@
+.navbar.navbar-inverse.navbar-fixed-top
+  .navbar-inner
+    .container
+      a.btn.btn-navbar(data-toggle='collapse', data-target='.nav-collapse')
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      a.brand(href='/admin') Game Points
+      .nav-collapse.collapse
+        ul.nav
+          li.active
+            a.home(href='/admin') Inicio
+          li
+            a(href='#contact') Contacto
+          li
+            a(href='#about') Mis juegos
+          li.dropdown
+            a.dropdown-toggle(href='#', data-toggle='dropdown')
+              | Reportes
+              b.caret
+            ul.dropdown-menu
+              li
+                a(href='#') A la venta
+              li
+                a(href='#') Vendidos
+              li.divider
+              li.nav-header $$$
+              li
+                a(href='#') Historial
+              li
+                a(href='#') Cobrar
+        form.navbar-form.pull-right
+          input.span2(type='text', placeholder='Email')
+          input.span2(type='password', placeholder='Password')
+          button.btn(type='submit') Sign in
