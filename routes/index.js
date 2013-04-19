@@ -18,3 +18,17 @@ exports.admin = function(req, res){
 exports.whoweare = function(req, res){
 	res.render('admin/whoweare', { title: 'Game Points Administration' });
 };
+
+/*
+ * GET admin howitworks.
+ */
+// exports.howitworks = function(req, res){
+// 	res.render('admin/howitworks', { title: 'Game Points Administration' });
+// };
+
+/*
+ * GET admin microprovider.
+ */
+// exports.microprovider = function(req, res){
+// 	res.render('admin/microprovider', { title: 'Game Points Administration' });
+// };

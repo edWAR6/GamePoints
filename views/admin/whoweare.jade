@@ -1,8 +1,38 @@
 extends adminlayout
 block content
   article#whoweare.container.active
-    header.hero-unit
+    header.row
+      img(src='/images/characters.jpg')
+    section.hero-unit
       h1 ¿Quiénes somos?
-      p Somos una compañía involucrada en el mercado de los videojuegos para consolas.... Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sem lectus, adipiscing eu scelerisque a, auctor quis nunc. Nunc sem ligula, facilisis vitae tincidunt et, varius ac risus.
-    section.row
-      h3 hi
+      p Somos una compañía involucrada en el mercado de los videojuegos para consolas y articulos relacionados.
+      p Nuestro negocio es el intercambio de videojuegos.
+
+    h3 Historia
+    p Game Points inicia como una idea que surge de dos sircunstancia comunes en la vida de un "gamer", la acomunación de video juegos ya terminados y la necesidad de una manera facil y económica de adquirir nuevos juegos.
+    p Gracias a lo activas que son las comunidades y grupos de video jugadores en las redes sociales, se a habierto una puerta al intercambio justo, controlado y facil de video juegos.
+
+    h3 ¿Quién?
+    section(itemscope='itemscope', itemtype='http://schema.org/Person')
+      p 
+      | El dueño y fundador de Game Points es 
+      span(itemprop="name") Eduardo Oviedo Blanco
+      |, hombre de familia, gamer de nacimiento, comerciante y profecional en el area del software.
+      p 
+      | Para dudas, preguntas o solicitudes, ingrese a la página de 
+      a(href='/admin/contact') contacto.
+
+    h3 ¿Qué?
+    p Negociamos con todos los juegos para consolas que existen, desde Atari hasta Play Station 4.
+    p Los juegos pueden ser usados o nuevos, pero los otros artículos como controles o consolas son nuevos y sellados de paquete.
+
+    h3 ¿Cómo?
+    p Game Points cuenta con un avansado y justo sistema de intercambio por puntos. De esta manera se evita la especulación del valor.
+    p 
+    |Nuestros clientes hacen uso de nuestro 
+    a(href='/') portal 
+    | y buscan en nuestra base de datos los juegos que quieren comprar o vender. Y simplemente compran o venden usando puntos. Luego usan esos puntos para comprar o vender más juegos.
+    p
+    | Para saber más ingrese a 
+    a(href='/admin/howitworks') ¿cómo funciona?
+    | .
