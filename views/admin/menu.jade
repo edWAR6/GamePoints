@@ -30,6 +30,11 @@
               li
                 a(href='#') Cobrar
         form.navbar-form.pull-right
-          input.span2(type='text', placeholder='Email')
-          input.span2(type='password', placeholder='Password')
-          button.btn(type='submit') Sign in
+          a.btn.logins(data-toggle='collapse', data-target='.otherLogins.collapse') Logins...
+          a(href='#').fb
+          .otherLogins.collapse
+            a(href='#').tw
+            a(href='#').go
+            input.span2(type='text', placeholder='Email')
+            input.span2(type='password', placeholder='Password')
+            button.btn(type='submit') Sign in
