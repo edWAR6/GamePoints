@@ -7,11 +7,11 @@ var adminApp = {
 	},
 
 	bindEvents: function(){
-		$('#login').bind('click', function() {
+		$('a.fb').bind('click', function() {
        FB.login(adminApp.handleSessionResponse);
     });
 
-    $('#logout').bind('click', function() {
+    $('a.fblogout').bind('click', function() {
       FB.logout(adminApp.handleSessionResponse);
     });
 	},

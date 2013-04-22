@@ -9,7 +9,8 @@ var express = require('express')
   , http = require('http')
   , path = require('path');
 
-var app = express();
+var app = express(),
+  store = new express.session.MemoryStore;
 
 // all environments
 app.set('port', process.env.PORT || 3000);
@@ -22,7 +23,7 @@ app.use(express.methodOverride());
 app.use(app.router);
 app.use(require('stylus').middleware(__dirname + '/public'));
 app.use(express.static(path.join(__dirname, 'public')));
-// app.use(express.basicAuth('username', 'password'));
+app.use(express.session({ secret: 'glorianayara', store: store }));
 
 // development only
 if ('development' == app.get('env')) {
@@ -30,8 +31,8 @@ if ('development' == app.get('env')) {
 };
 
 function checkAuth(req, res, next) {
-  console.log(req.session);
-  if (!req.session.user_id) {
+  // console.log(req.session);
+  if (typeof req.session.user === "undefined") {
     res.send('You are not authorized to view this page');
   } else {
     next();
@@ -47,24 +48,6 @@ app.get('/admin/signup', routes.signup);
 
 
 app.get('/users', user.list);
-
-// app.get('/', function(req, res){
-//   res.render('index', {
-//     title: 'Home'
-//   });
-// });
-
-// app.get('/about', function(req, res){
-//   res.render('about', {
-//     title: 'About'
-//   });
-// });
-
-// app.get('/contact', function(req, res){
-//   res.render('contact', {
-//     title: 'Contact'
-//   });
-// });
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
