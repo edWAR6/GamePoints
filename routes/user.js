@@ -1,3 +1,11 @@
+/*
+ * POST admin login
+ */
+
+exports.adminlogin = function(req, res){
+	console.log(req.body.user.email);
+	console.log(req.body.user.password);
+};
 
 /*
  * GET users listing.

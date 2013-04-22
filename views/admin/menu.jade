@@ -29,12 +29,12 @@
                 a(href='#') Historial
               li
                 a(href='#') Cobrar
-        form.navbar-form.pull-right
+        form(method='POST', action='/admin/login').navbar-form.pull-right
           a.btn.logins(data-toggle='collapse', data-target='.otherLogins.collapse') Logins...
           a(href='#').fb
           .otherLogins.collapse
             a(href='#').tw
             a(href='#').go
-            input.span2(type='text', placeholder='Email')
-            input.span2(type='password', placeholder='Password')
+            input.span2(type='text', placeholder='Email', name='user[email]')
+            input.span2(type='password', placeholder='Password', name='user[password]')
             button.btn(type='submit') Sign in

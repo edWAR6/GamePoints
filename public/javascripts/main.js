@@ -18,8 +18,12 @@ var adminApp = {
 
 	handleSessionResponse: function() {
     FB.api('/me', function(response) {
+    	if (response.id === undefined) {
+    		// logout
+    	}else{
+    		$('#user-info').html(response.id + ' - ' + response.name);
+    	};
       console.log(response);
-      $('#user-info').html(response.id + ' - ' + response.name);
     });
 	}
 };

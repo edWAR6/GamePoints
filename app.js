@@ -23,6 +23,7 @@ app.use(express.methodOverride());
 app.use(app.router);
 app.use(require('stylus').middleware(__dirname + '/public'));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.cookieParser()); 
 app.use(express.session({ secret: 'glorianayara', store: store }));
 
 // development only
@@ -41,6 +42,7 @@ function checkAuth(req, res, next) {
 
 app.get('/', routes.index);
 app.get('/admin', routes.admin);
+app.post('/admin/login', user.adminlogin);
 app.get('/admin/whoweare', routes.whoweare);
 app.get('/admin/howitworks', routes.howitworks);
 app.get('/admin/microprovider', checkAuth, routes.microprovider);
