@@ -3,11 +3,13 @@ extends adminlayout
 block content
   article#home.container.active
     header.hero-unit
+      span#user-info(style="border:1px solid #888")
+      span#fb-root
       h1 Game Points!
       p
         | Bienvenido al portal de administración de Game Points Costa Rica. En este portal podrás solicitar información sobre cómo puedes ser parte del gran mundo de Game Points. Si ya eres socio, consulta el estado de sus juegos, solicita pagos y administra tu inventario. Para iniciar en Game Points como un socio, por favor complete el formulario de registro.
       p
-        a#signup.btn.btn-primary.btn-large Registrese »
+        a(href='/admin/signup')#signup.btn.btn-primary.btn-large Registrese »
 
     section.row
       .span4
