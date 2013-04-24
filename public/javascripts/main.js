@@ -21,18 +21,15 @@ var adminApp = {
     	if (response.id === undefined) {
     		// logout
     	}else{
-        $.post({
+        $.ajax({
+          type: "POST",
           url: '/admin/login',
-          data: {
-            'method': 'facebook',
-            'facebookid': response.id,
-            'name': response.name
-          },
+          data: {'user':{'method': 'facebook','facebookid': response.id,'name': response.name}},
           success: function(data, textStatus, jqXHR){
-            
-          }
+            alert(data);
+          },
+          dataType: 'json'
         });
-    		$('#user-info').html(response.id + ' - ' + response.name);
     	};
       console.log(response);
     });

@@ -35,6 +35,8 @@
           .otherLogins.collapse
             a(href='#').tw
             a(href='#').go
+            input(type='hidden', name='user[method]', value='normal')
+              | normal
             input.span2(type='text', placeholder='Email', name='user[email]')
             input.span2(type='password', placeholder='Password', name='user[password]')
             button.btn(type='submit') Sign in
