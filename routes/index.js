@@ -2,7 +2,12 @@
  * GET home page.
  */
 exports.index = function(req, res){
-	res.render('index', { title: 'Expresóññóáí' });
+	var credentials = {};
+	if (process.env.VCAP_SERVICES) {
+		var configuration = JSON.parse(process.env.VCAP_SERVICES);
+		credentials = configuration['mysql-5.1'][0]['credentials'];
+	};
+	res.render('index', { title:  credentials.user});
 };
 
 /*

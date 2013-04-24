@@ -21,6 +21,17 @@ var adminApp = {
     	if (response.id === undefined) {
     		// logout
     	}else{
+        $.post({
+          url: '/admin/login',
+          data: {
+            'method': 'facebook',
+            'facebookid': response.id,
+            'name': response.name
+          },
+          success: function(data, textStatus, jqXHR){
+            
+          }
+        });
     		$('#user-info').html(response.id + ' - ' + response.name);
     	};
       console.log(response);
