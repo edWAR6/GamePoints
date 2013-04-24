@@ -1,3 +1,8 @@
+/* Eduardo Oviedo Blanco
+ * eduardo.oviedo@gmail.com
+ * User routes
+ */
+
 var gamepointsDB = require('mysqlGamePoints');
 
 /*
@@ -11,7 +16,7 @@ exports.adminlogin = function(req, res){
 	} else if (req.body.user.method == 'facebook'){
 		query += ' where FacebookToken = "' + req.body.user.facebookid + '";';
 	};
-  gamepointsDB.connection.connect();
+  // gamepointsDB.connection.connect();
   console.log('Query: ' + query);
   gamepointsDB.connection.query(query, function(err, results) {
     if (err) {
@@ -19,8 +24,25 @@ exports.adminlogin = function(req, res){
       throw err;
     };
 
-    gamepointsDB.connection.end();
-    res.render('admin/login', { title: JSON.stringify(results[0])});
+    // gamepointsDB.connection.end();
+    console.log('result[0] ' + JSON.stringify(results[0]));
+    if (results[0] === undefined) {
+    	// New user
+    	if (req.body.user.method == 'normal') {
+    		res.render('admin/login', { title: 'Game Points Login', message: 'No se encontró un usuario con ese email y password.', result: ''});
+    	} else{
+    		res.render('admin/login', { title: 'Game Points Login', message: 'Por favor complete el registro para poder ingresar.', result: JSON.stringify(results[0]) });
+    	};
+    } else{
+    	// Existing user
+    	if (results[0].Complete == 1) {
+    		// Login complete
+    		res.render('admin/games');
+    	} else{
+    		// Login incomplete
+    		res.render('admin/login', { title: 'Game Points Login', message: 'Por favor complete el registro para poder ingresar.', result: JSON.stringify(results[0]) });
+    	};
+    };
   });
 };
 

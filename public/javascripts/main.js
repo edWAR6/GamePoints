@@ -25,9 +25,6 @@ var adminApp = {
           type: "POST",
           url: '/admin/login',
           data: {'user':{'method': 'facebook','facebookid': response.id,'name': response.name}},
-          success: function(data, textStatus, jqXHR){
-            alert(data);
-          },
           dataType: 'json'
         });
     	};

@@ -1,8 +1,9 @@
-
-/**
- * Module dependencies.
+/* Eduardo Oviedo Blanco
+ * eduardo.oviedo@gmail.com
+ * Game Points server
  */
 
+// Module dependencies.
 var express = require('express'),
   routes = require('./routes'),
   user = require('./routes/user'),
