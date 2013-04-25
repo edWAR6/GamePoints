@@ -25,10 +25,13 @@ var adminApp = {
           type: "POST",
           url: '/admin/login',
           data: {'user':{'method': 'facebook','facebookid': response.id,'name': response.name}},
+          success: function(data, textStatus, jqXHR){
+            console.log('success ' + JSON.stringify(data));
+            window.location.href = '/admin/signup';
+          },
           dataType: 'json'
         });
     	};
-      console.log(response);
     });
 	}
 };

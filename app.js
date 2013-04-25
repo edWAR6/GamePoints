@@ -21,11 +21,11 @@ app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.bodyParser());
 app.use(express.methodOverride());
-app.use(app.router);
 app.use(require('stylus').middleware(__dirname + '/public'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.cookieParser()); 
 app.use(express.session({ secret: 'glorianayara', store: store }));
+app.use(app.router);
 
 // development only
 if ('development' == app.get('env')) {
@@ -34,7 +34,7 @@ if ('development' == app.get('env')) {
 
 function checkAuth(req, res, next) {
   // console.log(req.session);
-  if (typeof req.session.user === "undefined") {
+  if (typeof req.session.user === "undefined" || req.session.user.active == 0) {
     res.send('You are not authorized to view this page');
   } else {
     next();
@@ -43,11 +43,14 @@ function checkAuth(req, res, next) {
 
 app.get('/', routes.index);
 app.get('/admin', routes.admin);
-app.post('/admin/login', user.adminlogin);
+app.post('/admin/login', user.login);
+app.get('/admin/signup', routes.signup);
+app.post('/admin/signup', user.signup)
+
 app.get('/admin/whoweare', routes.whoweare);
 app.get('/admin/howitworks', routes.howitworks);
 app.get('/admin/microprovider', checkAuth, routes.microprovider);
-app.get('/admin/signup', routes.signup);
+
 
 
 app.get('/users', user.list);

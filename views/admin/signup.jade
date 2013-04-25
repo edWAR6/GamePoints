@@ -1,0 +1,38 @@
+//
+  Eduardo Oviedo Blanco
+  eduardo.oviedo@gmail.com
+  Sign up screen
+extends adminlayout
+block content
+  article#signup.container
+    header.hero-unit
+      h1 Registro de usuarios administradores
+      p Complete los siguientes datos personales y acepte los términos y condiciones para aplicar como usuario administrador de Game Points.
+    p #{message}
+    .clearfix
+      section
+        form(method='POST', action='/admin/login', autocomplete='on')
+          input#name.span4(type='text', placeholder='Nombre', value=user.name, name='user[name]')
+          input#email.span4(type='email', placeholder='Email', value=user.email, name='user[email]')
+          input#password.span4(type='password', placeholder='Contraseña', name='user[password]')
+          input#phone.span4(type='tel', placeholder='Teléfono', value=user.phone, name='user[phone]')
+          input#country.span4(type='tel', placeholder='País', value=user.country, name='user[country]')
+          input#state.span4(type='tel', placeholder='Provincia', value=user.state, name='user[state]')
+          input#city.span4(type='tel', placeholder='Cantón', value=user.city, name='user[city]')
+          input#town.span4(type='tel', placeholder='Distrito', value=user.town, name='user[town]')
+          input#address.span4(type='tel', placeholder='Dirección', value=user.address, name='user[address]')
+          input#aditionalindications.span4(type='tel', placeholder='Indicasiones de entrega', value=user.aditionalindications, name='user[aditionalindications]')
+          p Cuentenos sobre usted, su negocio o su colección de video juegos.
+          textarea#comment.span4(placeholder='Comentario', cols='30', value=user.comment, name='user[comment]')
+          br
+          button.btn(type='submit') Hacer solicitud
+      aside
+        h3 ¿Cómo funciona?
+        img(src='../images/wario.jpg')
+        p
+          | Ingrese sus datos personales en el formulario para aplicar como socio de Game Points. En cuestión de unas horas recibirá un correo electrónico o una llamada telefónica en la que un representante de Game Points negociará con usted los términos del negocio.
+        p
+          | En caso de llegarse a un acuerdo tendrá acceso a autenticarse en el sitio de administración y hacer uso de todos los beneficios de Game Points.
+    hr
+    footer
+      p © Game Points 2013      
