@@ -11,11 +11,11 @@ block content
     p #{message}
     .clearfix
       section
-        form(method='POST', action='/admin/login', autocomplete='on')
-          input#name.span4(type='text', placeholder='Nombre', value=user.name, name='user[name]')
-          input#email.span4(type='email', placeholder='Email', value=user.email, name='user[email]')
-          input#password.span4(type='password', placeholder='Contraseña', name='user[password]')
-          input#phone.span4(type='tel', placeholder='Teléfono', value=user.phone, name='user[phone]')
+        form(method='POST', action='/admin/signup', autocomplete='on')
+          input#name.span4(type='text', placeholder='Nombre', value=person.name, name='person[name]')
+          input#email.span4(type='email', placeholder='Email', value=person.email, name='person[email]')
+          input#password.span4(type='password', placeholder='Contraseña', name='person[password]')
+          input#phone.span4(type='tel', placeholder='Teléfono', value=person.phone, name='person[phone]')
           input#country.span4(type='tel', placeholder='País', value=user.country, name='user[country]')
           input#state.span4(type='tel', placeholder='Provincia', value=user.state, name='user[state]')
           input#city.span4(type='tel', placeholder='Cantón', value=user.city, name='user[city]')
@@ -23,7 +23,7 @@ block content
           input#address.span4(type='tel', placeholder='Dirección', value=user.address, name='user[address]')
           input#aditionalindications.span4(type='tel', placeholder='Indicasiones de entrega', value=user.aditionalindications, name='user[aditionalindications]')
           p Cuentenos sobre usted, su negocio o su colección de video juegos.
-          textarea#comment.span4(placeholder='Comentario', cols='30', value=user.comment, name='user[comment]')
+          textarea#comment.span4(placeholder='Comentario', cols='30', value=administrator.comment, name='administrator[comment]')
           br
           button.btn(type='submit') Hacer solicitud
       aside
