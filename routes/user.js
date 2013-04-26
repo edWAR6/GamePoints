@@ -1,6 +1,6 @@
 /* Eduardo Oviedo Blanco
  * eduardo.oviedo@gmail.com
- * User routes
+ * user routes
  */
 
 var gamepointsDB = require('mysqlGamePoints');
@@ -55,11 +55,11 @@ exports.twittercallback = function(req, res, next){
  */
 exports.login = function(req, res){
   console.log('executing login...');
-	var query = 'SELECT administrator.ID as administrator_ID, administrator.person_ID, administrator.Type, administrator.Comment, person.Active, person.Complete, person.Email, person.ID, person.Name, person.Password, person.Phone, User.Address, User.AditionalIndications, User.`Canton_City`, User.Country, User.`District_Town`, User.FacebookToken, User.GoogleToken, User.ID as User_ID, User.person_ID, User.Points, User.`Province_State`, User.TwitterToken FROM administrator inner join person on administrator.person_ID = person.ID inner join User on User.person_ID = person.ID';
+	var query = 'SELECT administrator.id as administratorid, administrator.type, administrator.comment, person.id as personid, person.active, person.complete, person.email, person.name, person.password, person.phone, user.id as userid, user.address, user.aditionalindications, user.canton_city, user.country, user.district_town, user.facebookid, user.googleid, user.points, user.province_state, user.twitterid FROM administrator inner join person on administrator.personid = person.id inner join user on user.personid = person.id';
 	if (req.body.user.method == 'normal') {
-		query += ' where Email = "' + req.body.person.email + '" and Password = "' + req.body.person.password + '";';
+		query += ' where email = "' + req.body.person.email + '" and password = "' + req.body.person.password + '";';
 	} else if (req.body.user.method == 'facebook'){
-		query += ' where FacebookToken = "' + req.body.user.facebookid + '";';
+		query += ' where facebookid = "' + req.body.user.facebookid + '";';
 	};
   // gamepointsDB.connection.connect();
   gamepointsDB.connection.query(query, function(err, results) {
@@ -71,21 +71,23 @@ exports.login = function(req, res){
     if (results[0] === undefined) {
     	// New user
     	if (req.body.user.method == 'normal') {
-        req.session.user = {email: req.body.person.email};
-    		res.render('admin/signup', { title: 'Game Points new user', message: 'No se encontró un usuario con ese email y password. Si es su primer visita, complete el formulario, si no intente de nuevo.', user: req.session.user });
+        req.session.person = {email: req.body.person.email};
+    		res.render('admin/signup', { title: 'Game points new user', message: 'No se encontró un usuario con ese email y password. Si es su primer visita, complete el formulario, si no intente de nuevo.', person: {}, user: req.session.user, administrator: {} });
     	} else if (req.body.user.method == 'facebook'){
         req.session.user = {name: req.body.person.name, facebookid: req.body.facebookid};
-    		res.send({ message: 'Por favor regisrese para poder ingresar.', user: req.session.user });
+    		res.send({ message: 'Por favor regisrese para poder ingresar.', person: {}, user: req.session.user, administrator: {} });
     	};
     } else{
     	// Existing user
+      req.session.person = results[0].person;
       req.session.user = results[0].user;
-    	if (results[0].Complete == 1) {
+      req.session.administrator = results[0].administrator;
+    	if (results[0].complete == 1) {
     		// Login complete
-    		res.render('admin/games', { title: 'Game Points existing user', user: results[0].user });
+    		res.render('admin/games', { title: 'Game points, usuario identificado', user: results[0].user });
     	} else{
     		// Login incomplete
-    		res.render('admin/signup', { title: 'Game Points existing user', message: 'Por favor complete el registro para poder ingresar.', user: results[0].user });
+    		res.render('admin/signup', { title: 'Game points, usuario incompleto', message: 'Por favor complete el registro para poder ingresar.', user: results[0].user });
     	};
     };
   });
@@ -99,38 +101,38 @@ exports.signup = function(req, res){
   console.log('executing signup...');
   getperson(req, req.body.person.email, function(req, person){
     var personquery = '';
-    var sessionUser = req.session.user || { facebookid: '', googleid: '', twitterid: '' };
+    var sessionuser = req.session.user || { facebookid: '', googleid: '', twitterid: '' };
     if (person) {
-      personquery = 'UPDATE person SET Email = "'+ req.body.person.email +'", Name = "'+ req.body.person.name +'", Phone = "'+ req.body.person.phone +'" WHERE ID = "'+ person.ID +'";';      
+      personquery = 'UPDATE person SET email = "'+ req.body.person.email +'", name = "'+ req.body.person.name +'", phone = "'+ req.body.person.phone +'" WHERE id = "'+ person.id +'";';      
     }else{
-      personquery = 'INSERT INTO person (Active, Complete, Email, Name, Password, Phone) VALUES (0, 0, "'+ req.body.person.email +'", "'+ req.body.person.name +'", "'+ req.body.person.password +'", "'+ req.body.person.phone +'");';
+      personquery = 'INSERT INTO person (active, complete, email, name, password, phone) VALUES (0, 0, "'+ req.body.person.email +'", "'+ req.body.person.name +'", "'+ req.body.person.password +'", "'+ req.body.person.phone +'");';
     };
     gamepointsDB.connection.query(personquery, function(err, results) {
       if (err) {
         console.log('Error signing person.');
         throw err;
       };
+      req.session.person = person || { personid: results.insertId, email: req.body.person.email, name: req.body.person.name, phone: req.body.person.phone };
       var userquery = '';
-      // console.log('results: ' + JSON.stringify(results));
-      getuser(req, (results.insertId == 0 ? person.ID : results.insertId), function(req, user, personid){
+      getuser(req, (results.insertId == 0 ? person.id : results.insertId), function(req, user, personid){
         if (user) {
-          userquery = 'UPDATE User SET Address = "'+ req.body.user.address +'", AditionalIndications = "'+ req.body.user.aditionalindications +'", Canton_City = "'+ req.body.user.city +'", Country = "'+ req.body.user.country +'", District_Town = "'+ req.body.user.town +'", FacebookToken = "'+ sessionUser.facebookid +'", GoogleToken = "'+ sessionUser.googleid +'", Province_State = "'+ req.body.user.state +'", TwitterToken = "'+ sessionUser.twitterid +'" WHERE ID = '+ user.ID +';';
+          userquery = 'UPDATE user SET address = "'+ req.body.user.address +'", aditionalindications = "'+ req.body.user.aditionalindications +'", canton_city = "'+ req.body.user.city +'", country = "'+ req.body.user.country +'", district_town = "'+ req.body.user.town +'", facebookid = "'+ sessionuser.facebookid +'", googleid = "'+ sessionuser.googleid +'", province_state = "'+ req.body.user.state +'", twitterid = "'+ sessionuser.twitterid +'" WHERE id = '+ user.id +';';
         } else{
-          userquery = 'INSERT INTO User (Address, AditionalIndications, Canton_City, Country, District_Town, FacebookToken, GoogleToken, person_ID, Province_State, TwitterToken) VALUES ("'+ req.body.user.address +'", "'+ req.body.user.aditionalindications +'", "'+ req.body.user.city +'", "'+ req.body.user.country +'", "'+ req.body.user.town +'", "'+ sessionUser.facebookid +'", "'+ sessionUser.googleid +'", '+ personid +', "'+ req.body.user.state +'", "'+ sessionUser.twitterid +'");';          
+          userquery = 'INSERT INTO user (address, aditionalindications, canton_city, country, district_town, facebookid, googleid, personid, province_state, twitterid) VALUES ("'+ req.body.user.address +'", "'+ req.body.user.aditionalindications +'", "'+ req.body.user.city +'", "'+ req.body.user.country +'", "'+ req.body.user.town +'", "'+ sessionuser.facebookid +'", "'+ sessionuser.googleid +'", '+ personid +', "'+ req.body.user.state +'", "'+ sessionuser.twitterid +'");';          
         };
-        // console.log('userquery: '+userquery);
         gamepointsDB.connection.query(userquery, function(err, results) {
           if (err) {
             console.log('Error signing user.');
             throw err;
           };
-          if (req.body.person.comment) {
+          req.session.user = user || { address: req.body.user.address, aditionalindications: req.body.user.aditionalindications, city: req.body.user.city, country: req.body.user.country, town: req.body.user.town, facebookid: sessionuser.facebookid, googleid: sessionuser.googleid, state: req.body.user.state, twitterid: sessionuser.twitterid };
+          if (req.body.administrator.comment) {
             getadministrator(req, personid, function(req, administrator, personid){
               var administratorquery = '';
               if (administrator) {
-                administratorquery = 'UPDATE administrator SET Comment = "'+ req.body.person.comment +'" WHERE ID = '+ administrator.ID +';';  
+                administratorquery = 'UPDATE administrator SET comment = "'+ req.body.person.comment +'" WHERE id = '+ administrator.id +';';  
               } else{
-                administratorquery = 'INSERT INTO administrator (Comment, person_ID, Type) VALUES ("'+ req.body.administrator.comment +'", '+ personid +', "microAdmin");';
+                administratorquery = 'INSERT INTO administrator (comment, personid, type) VALUES ("'+ req.body.administrator.comment +'", '+ personid +', "microAdmin");';
               };
               // console.log(administratorquery);
               gamepointsDB.connection.query(administratorquery, function(err, results) {
@@ -138,13 +140,12 @@ exports.signup = function(req, res){
                   console.log('Error signing administrator.');
                   throw err;
                 };
-                req.session.administrator = administrator || {id: results.insertId, personid: personid, type: "microAdmin", comment: req.body.administrator.comment};
-                res.render('admin/signup', { title: 'Game Points, registro de administrador', message: 'Usuario administrador registrado con éxito.', person: req.session.person, user: req.session.user, administrator: req.session.administrator });
+                req.session.administrator = administrator || { type: "microAdmin", comment: req.body.administrator.comment };
+                res.render('admin/signup', { title: 'Game points, registro de administrador', message: 'Usuario administrador registrado con éxito.', person: req.session.person, user: req.session.user, comment: req.session.administrator });
               });
             });
           } else{
-            res.render('dashboard', { title: 'Game Points, registro de usuario', message: 'Usuario registrado con éxito.', person: req.session.person, user: req.session.user, administrator: null });
-            res.send({ message: '' });
+            res.render('dashboard', { title: 'Game points, dashboard', message: 'Usuario registrado con éxito.', person: req.session.person, user: req.session.user, administrator: {} });
           };
         });
       });
@@ -154,7 +155,7 @@ exports.signup = function(req, res){
 
 getperson = function(req, email, callback){
   console.log('executing personexist...');
-  var query = 'SELECT ID FROM person where Email = "'+ email +'"';
+  var query = 'SELECT id FROM person where email = "'+ email +'"';
   gamepointsDB.connection.query(query, function(err, results) {
     if (err) {
       console.log('Error in personexist.');
@@ -166,7 +167,7 @@ getperson = function(req, email, callback){
 
 getuser = function(req, personid, callback){
   console.log('executing userexist...');
-  var query = 'SELECT ID FROM User where person_ID = '+ personid ;
+  var query = 'SELECT id FROM user where personid = '+ personid ;
   gamepointsDB.connection.query(query, function(err, results) {
     if (err) {
       console.log('Error in personexist.');
@@ -178,7 +179,7 @@ getuser = function(req, personid, callback){
 
 getadministrator = function(req, personid, callback){
   console.log('executing administratorexist...');
-  var query = 'SELECT ID FROM administrator where person_ID = '+ personid ;
+  var query = 'SELECT id FROM administrator where personid = '+ personid ;
   gamepointsDB.connection.query(query, function(err, results) {
     if (err) {
       console.log('Error in administratorexist.');
