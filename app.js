@@ -47,6 +47,9 @@ app.post('/admin/login', user.login);
 app.get('/admin/signup', routes.signup);
 app.post('/admin/signup', user.signup)
 
+app.get('/auth/twitter', user.twitter);
+app.get('/auth/twitter/callback', user.twittercallback);
+
 app.get('/admin/whoweare', routes.whoweare);
 app.get('/admin/howitworks', routes.howitworks);
 app.get('/admin/microprovider', checkAuth, routes.microprovider);
@@ -56,5 +59,5 @@ app.get('/admin/microprovider', checkAuth, routes.microprovider);
 app.get('/users', user.list);
 
 http.createServer(app).listen(app.get('port'), function(){
-  console.log('Express server listening on port ' + app.get('port'));
+  console.log('Game Points server listening on port ' + app.get('port'));
 });

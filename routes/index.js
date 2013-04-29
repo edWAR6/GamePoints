@@ -2,12 +2,7 @@
  * GET home page.
  */
 exports.index = function(req, res){
-	var credentials = {};
-	if (process.env.VCAP_SERVICES) {
-		var configuration = JSON.parse(process.env.VCAP_SERVICES);
-		credentials = configuration['mysql-5.1'][0]['credentials'];
-	};
-	res.render('index', { title:  credentials.user});
+	res.render('index', { title: 'Game Points'});
 };
 
 /*
@@ -43,5 +38,5 @@ exports.microprovider = function(req, res){
  */
 exports.signup = function(req, res){
 
-	res.render('admin/signup', { title: 'Game Points Administration', message: '', user: '' });
+	res.render('admin/signup', { title: 'Game Points Administration', message: '', person: {}, user: {}, administrator: {} });
 };
