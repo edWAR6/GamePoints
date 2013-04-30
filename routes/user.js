@@ -188,11 +188,3 @@ getadministrator = function(req, personid, callback){
     callback(req, results[0], personid);
   });
 };
-
-/*
- * GET users listing.
- */
-
-exports.list = function(req, res){
-  res.send("respond with a resource");
-};
