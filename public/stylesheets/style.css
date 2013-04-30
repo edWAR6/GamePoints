@@ -2,7 +2,6 @@
 Game Point's custom styles
 ========================================================================== */
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 a {
@@ -91,4 +90,9 @@ article#howitworks .gamesstack {
   #comment {
     max-width: 80%;
   }
+}
+/* CLIENT */
+/* Index */
+.smallfilterbtn {
+  float: left;
 }

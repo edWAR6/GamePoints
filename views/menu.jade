@@ -1,5 +1,43 @@
-header
-  img(src='images/gp.png')
-  div
-    h1 Game Points
-    span Intercambio de video juegos
+.navbar.navbar-inverse.navbar-fixed-top
+  .navbar-inner
+    .container
+      a.btn.btn-navbar.smallfilterbtn(data-toggle='collapse', data-target='.nav-collapse')
+      a.btn.btn-navbar(data-toggle='collapse', data-target='.nav-collapse')
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      a.brand(href='/') Game Points
+      .nav-collapse.collapse
+        ul.nav
+          li.active
+            a.home(href='/admin') Inicio
+          li
+            a(href='#contact') Contacto
+          li
+            a(href='#about') Mis juegos
+          li.dropdown
+            a.dropdown-toggle(href='#', data-toggle='dropdown')
+              | Reportes
+              b.caret
+            ul.dropdown-menu
+              li
+                a(href='#') A la venta
+              li
+                a(href='#') Vendidos
+              li.divider
+              li.nav-header $$$
+              li
+                a(href='#') Historial
+              li
+                a(href='#') Cobrar
+        form(method='POST', action='/admin/login').navbar-form.pull-right
+          a.btn.logins(data-toggle='collapse', data-target='.otherLogins.collapse') Logins...
+          a(href='#').fb
+          .otherLogins.collapse
+            a(href='/auth/twitter').tw
+            a(href='#').go
+            input(type='hidden', name='user[method]', value='normal')
+              | normal
+            input.span2(type='text', placeholder='Email', name='person[email]')
+            input.span2(type='password', placeholder='Password', name='person[password]')
+            button.btn(type='submit') Sign in
