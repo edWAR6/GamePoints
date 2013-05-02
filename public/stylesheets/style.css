@@ -93,6 +93,11 @@ article#howitworks .gamesstack {
 }
 /* CLIENT */
 /* Index */
+@media only screen and (min-width : 979px) {
+  article#home section {
+    margin-top: 75px;
+  }
+}
 .smallfilterbtn {
   float: left;
 }
