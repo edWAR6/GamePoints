@@ -7,7 +7,7 @@ http://css-tricks.com/snippets/css/media-queries-for-standard-devices/
 */
 
 body
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif
+  font: 14px/18px "Lucida Grande", Helvetica, Arial, sans-serif
 a
   color: #00B7FF
 
@@ -96,11 +96,59 @@ article#howitworks .gamesstack
 
 /* CLIENT */
 
+/* Menu */
+
+.smallfilterbtn
+  float left
+
 /* Index */
 
 @media only screen and (min-width : 979px)
-  article#home section
-    margin-top: 75px
+  article#home
+    margin-top 75px
 
-.smallfilterbtn
-  float: left
+article.container
+  max-width 83em
+  min-width 20em
+
+aside.filter
+  float none
+  width 100%
+
+section.itemsgrid
+  float none
+  width 100%
+
+article.game
+  margin-left 0
+  background #eee
+  margin-bottom 30px
+  width 100%
+  clear none
+
+@media only screen and (min-width : 481px)
+
+  aside.filter
+    float left
+    width 20%
+
+  section.itemsgrid
+    float left
+    width 80%
+
+  article.game
+    float left
+    margin-left 3.2%
+    width 22.6%
+
+  article.game:nth-of-type(4n+1)
+    margin-left 0
+    clear left
+
+@media only screen and (min-width : 481px) and (max-width : 768px)
+  article.game:nth-of-type(4n+1)
+    clear none
+
+  article.game:nth-of-type(3n+1)
+    margin-left 0
+    clear left
