@@ -7,17 +7,12 @@ block content
     section.itemsgrid
       h3 grid
       .wrapper
-        article.game juego 1
-        article.game juego 2
-        article.game juego 3
-        article.game juego 4
-        article.game juego 5
-        article.game juego 6
-        article.game juego 7
-        article.game juego 8
-        article.game juego 9
-        article.game juego 10
-        article.game juego 11
+        if games
+          each game in games
+            article.game 
+              p #{game.title}
+        else
+          p Lo sentimos, no hay juegos disponibles por el momento.
     .clearfix
 
       

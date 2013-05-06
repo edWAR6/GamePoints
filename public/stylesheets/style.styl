@@ -7,7 +7,7 @@ http://css-tricks.com/snippets/css/media-queries-for-standard-devices/
 */
 
 body
-  font: 14px/18px "Lucida Grande", Helvetica, Arial, sans-serif
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif
 a
   color: #00B7FF
 
@@ -103,10 +103,6 @@ article#howitworks .gamesstack
 
 /* Index */
 
-@media only screen and (min-width : 979px)
-  article#home
-    margin-top 75px
-
 article.container
   max-width 83em
   min-width 20em
@@ -152,3 +148,9 @@ article.game
   article.game:nth-of-type(3n+1)
     margin-left 0
     clear left
+
+
+
+@media only screen and (min-width : 979px)
+  article#home
+    margin-top 75px

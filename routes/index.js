@@ -1,12 +1,10 @@
-/*
- * GET /.
+/* Eduardo Oviedo Blanco
+ * eduardo.oviedo@gmail.com
+ * game model
  */
-exports.index = function(req, res){
-	res.render('index', { title: 'Game Points'});
-};
 
 /*
- * GET /admin.
+ * GET /admin
  */
 exports.admin = function(req, res){
 	res.render('admin/index', { title: 'Game Points Administration' });
