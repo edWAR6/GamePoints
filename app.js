@@ -45,7 +45,7 @@ function checkAuth(req, res, next) {
 app.get('/auth/twitter', user.twitter);
 app.get('/auth/twitter/callback', user.twittercallback);
 
-app.get('/', game.index);
+app.get('/', routes.admin);//game.index);
 
 
 app.get('/admin', routes.admin);

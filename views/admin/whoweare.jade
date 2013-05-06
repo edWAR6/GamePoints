@@ -1,15 +1,15 @@
 extends adminlayout
 block content
-  article#whoweare.container.active
-    header.row
-      img(src='/images/characters.jpg')
-    section.hero-unit
+  article#whoweare.container
+    header.hero-unit
       h1 ¿Quiénes somos?
       p Somos una compañía involucrada en el mercado de los videojuegos para consolas y articulos relacionados.
       p Nuestro negocio es el intercambio de videojuegos.
+    section.image
+      img(src='/images/characters.jpg')
 
     h3 Historia
-    p Game Points inicia como una idea que surge de dos sircunstancia comunes en la vida de un "gamer", la acomunación de video juegos ya terminados y la necesidad de una manera facil y económica de adquirir nuevos juegos.
+    p Game Points inicia en el 2013 como una idea que surge de dos sircunstancia comunes en la vida de un "gamer", la acomunación de video juegos ya terminados y la necesidad de una manera facil y económica de adquirir nuevos juegos.
     p Gracias a lo activas que son las comunidades y grupos de video jugadores en las redes sociales, se a habierto una puerta al intercambio justo, controlado y facil de video juegos.
 
     h3 ¿Quién?
@@ -17,13 +17,13 @@ block content
       p 
       | El dueño y fundador de Game Points es 
       span(itemprop="name") Eduardo Oviedo Blanco
-      |, hombre de familia, gamer de nacimiento, comerciante y profecional en el area del software.
+      |, hombre de familia, gamer de nacimiento, empresario y profecional en el area del software.
       p 
       | Para dudas, preguntas o solicitudes, ingrese a la página de 
       a(href='/admin/contact') contacto.
 
     h3 ¿Qué?
-    p Negociamos con todos los juegos para consolas que existen, desde Atari hasta Play Station 4.
+    p Negociamos con todos los juegos para consolas que existen, desde Atari 2600 hasta Play Station 4.
     p Los juegos pueden ser usados o nuevos, pero los otros artículos como controles o consolas son nuevos y sellados de paquete.
 
     h3 ¿Cómo?
@@ -36,3 +36,4 @@ block content
     | Para saber más ingrese a 
     a(href='/admin/howitworks') ¿cómo funciona?
     | .
+    include footer

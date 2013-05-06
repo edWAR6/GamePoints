@@ -11,7 +11,7 @@ var gamemodel = require('../models/game');
 exports.index = function(req, res){
   gamemodel.getall(0, function (err, results) {
     if (err) throw err;
-    console.log('results:'+ JSON.stringify(results));
+    // console.log('results:'+ JSON.stringify(results));
     res.render('index', { title: 'Game Points', games: results});
   });
 };

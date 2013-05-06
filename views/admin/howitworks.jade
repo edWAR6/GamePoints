@@ -1,4 +1,28 @@
 extends adminlayout
 block content
-  article#howitworks
-    h1 how it works
+  article#howitworks.container
+    header.hero-unit
+      h1 ¿Cómo funciona?
+      p
+      | Cualquier persona puede ser usuario de Game Points. Lo único que debe hacer es registrarse en el 
+      a(href='/') portal
+      |. En donde se pueden comprar, vender e intercambiar video juegos. Haciendo siempre uso de puntos (gp). En este momento cada punto equivale a 10 colones de Costa Rica.
+    section
+      h2 Usuarios
+      p 
+      |En Game Points existen dos tipos de usuarios, los normales y los administradores. Para saber cómo funciona un administrador ingrese 
+      a(href='/admin/microprovider') aquí
+      |.
+      p Todo administrador es automáticamente usuarios de Game Points. Y los usuarios tienen derecho a comprar juegos y artículos, vender sus juegos y pedir artículos que aun no salen a la venta.
+      h2 Comprando juegos o artículos
+      p
+      | Para comprar un juego puedes ingresar al 
+      a(href='/') portal de Game Points 
+      | y buscar el o los artículos de tu preferencia. 
+      img(src='/images/shoppingcart.png').cart
+      |Si tienes puntos acumulados, puedes pagar con ellos y recibiras tu juego o artículo el mismo día o al día siguiente (depende del tipo de artículo).
+      h2 Vendiendo juegos
+      p
+      |En Game Points puedes vender tus juegos, mas no artículos. Para vender simplemente ingresa al 
+      a(href='/') portal de Game Points 
+      | y busca el juego que ya tienes que deseas vender.

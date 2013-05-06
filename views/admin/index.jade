@@ -1,11 +1,11 @@
 extends adminlayout
 
 block content
-  article#home.container.active
+  article#admin.container
     header.hero-unit
       h1 Game Points!
       p
-        | Bienvenido al portal de administración de Game Points Costa Rica. En este portal podrás solicitar información sobre cómo puedes ser parte del gran mundo de Game Points. Si ya eres socio, consulta el estado de sus juegos, solicita pagos y administra tu inventario. Para iniciar en Game Points como un socio, por favor complete el formulario de registro.
+        | Bienvenido al portal de administración de Game Points Costa Rica. En este portal podrás solicitar información sobre cómo puedes ser parte del gran mundo de Game Points. Si ya eres socio, consulta el estado de sus juegos, solicita pagos y administra tu inventario. Para aplicar en Game Points como un socio, por favor complete el formulario de registro.
       p
         a(href='/admin/signup')#signup.btn.btn-primary.btn-large Registrese »
 
@@ -13,21 +13,22 @@ block content
       .span4
         h2 ¿Quienes somos?
         p
-          | Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+          | Somos una compaía seria, involucrada en el mercado de los video juegos, en la compra, venta e intercambio de video juegos. Brindamos la oportunidad al publico de participar de dos maneras distintas. Ingresa para saber más.
         p
           a.btn(href='/admin/whoweare') Ver detalles »
       .span4
         h2 ¿Cómo funciona?
         p
-          | Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+          | Game Points se trata de vender, comprar e intercambiar video juegos y artículos relacionados. Un administrador y un usuario son conceptos distintos que funcionan de manera diferente. Ingresa para saber más.
         p
           a.btn(href='/admin/howitworks') Ver detalles »
       .span4
         h2 ¿Cómo participo?
         p
-          | Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
+          | Si desea participar puede hacerlo en el 
+          a(href='/') portal de Game Points
+          |, pero si desea ir un paso más allá conosca cómo puede ganar dinero combirtiendose en administrador de Game Points. Ingrese para saber más.
         p
           a.btn(href='/admin/microprovider') Ver detalles »
-    hr
-    footer
-      p © Game Points 2013
+    include footer
+    
