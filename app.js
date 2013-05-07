@@ -8,6 +8,7 @@ var express = require('express'),
   routes = require('./routes'),
   user = require('./routes/user'),
   game = require('./routes/game');
+  contact = require('./routes/contact');
   http = require('http'),
   path = require('path');
 
@@ -54,7 +55,9 @@ app.get('/admin/signup', routes.signup);
 app.post('/admin/signup', user.signup)
 app.get('/admin/whoweare', routes.whoweare);
 app.get('/admin/howitworks', routes.howitworks);
-app.get('/admin/microprovider', checkAuth, routes.microprovider);
+app.get('/admin/microprovider', routes.microprovider);
+app.get('/admin/contact', routes.contact);
+app.post('/admin/contact', contact.sendEmail);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Game Points server listening on port ' + app.get('port'));

@@ -16,6 +16,9 @@ a {
 }
 /* ADMIN */
 /* Menu */
+a.brand {
+  color: #fff !important;
+}
 a.logins {
   float: right;
 }

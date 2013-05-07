@@ -35,5 +35,12 @@ exports.microprovider = function(req, res){
  * GET /admin/signup
  */
 exports.signup = function(req, res){
-	res.render('admin/signup', { title: 'Game Points Administration', message: '', person: {}, user: {}, administrator: {} });
+  res.render('admin/signup', { title: 'Game Points Administration', message: '', person: {}, user: {}, administrator: {} });
+};
+
+/*
+ * GET /admin/contact
+ */
+exports.contact = function(req, res){
+  res.render('admin/contact', { title: 'Game Points Administration', message: '' });
 };
