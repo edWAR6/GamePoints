@@ -8,6 +8,33 @@ block content
     header.hero-unit
       h1 Contactenos
       p Envienos un mensaje y pronto le responderemos.
+    p #{message}
+    aside
+      h2 Información
+      h3 Emails
+      ul
+        li
+          p
+          |Para información y preguntas sobre el 
+          a(href='/') portal Game Points 
+          | contactenos a: info@gamepointscr.com
+        li
+          p Para información y preguntas sobre cómo ser socio contactenos a: admin@gamepointscr.com
+      p Encuentranos en las redes sociales.
+      a(href='http://facebook.com', target='_blank')
+        img(src='/images/i.gif').facebook
+      a(href='http://twitter.com', target='_blank')
+        img(src='/images/i.gif').twitter
+      a(href='http://google.com', target='_blank')
+        img(src='/images/i.gif').google
     section
-      p hola
+      h2 Contactenos
+      form(method='POST', action='/admin/contact')
+        input#name.span5(type='text', placeholder='Nombre', required, name='contact[name]')
+        input#email.span5(type='email', placeholder='Email', required, name='contact[email]')
+        input#subject.span5(type='text', placeholder='Tema', required, name='contact[subject]')
+        textarea#message.span5(placeholder='Mensaje', cols='40', rows='7', required, name='contact[message]')
+        br
+        button.btn(type='submit') Enviar
+    .clearfix
     include footer

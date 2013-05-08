@@ -57,7 +57,7 @@ app.get('/admin/whoweare', routes.whoweare);
 app.get('/admin/howitworks', routes.howitworks);
 app.get('/admin/microprovider', routes.microprovider);
 app.get('/admin/contact', routes.contact);
-app.post('/admin/contact', contact.sendEmail);
+app.post('/admin/contact', contact.sendemail);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Game Points server listening on port ' + app.get('port'));
