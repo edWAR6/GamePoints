@@ -44,3 +44,10 @@ exports.signup = function(req, res){
 exports.contact = function(req, res){
   res.render('admin/contact', { title: 'Game Points Administration', message: '' });
 };
+
+/*
+ * GET /admin/games
+ */
+exports.games = function(req, res){
+  res.render('admin/games', { title: 'Game Points-Mis juegos', message: '' });
+};

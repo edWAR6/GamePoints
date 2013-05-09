@@ -35,11 +35,10 @@ if ('development' == app.get('env')) {
 };
 
 function checkAuth(req, res, next) {
-  // console.log(req.session);
-  if (typeof req.session.user === "undefined" || req.session.user.active == 0) {
-    res.send('You are not authorized to view this page');
-  } else {
+  if (typeof req.session.user !== "undefined" && req.session.person.active == 1) {
     next();
+  } else {
+    res.render('admin/signup', { title: 'Game points - participa', message: 'Para poder administrar tu inventario debes primero solicitar el ingreso y ser aprobado.', user: {}, person: {}, administrator: {} });
   }
 };
 
@@ -58,6 +57,7 @@ app.get('/admin/howitworks', routes.howitworks);
 app.get('/admin/microprovider', routes.microprovider);
 app.get('/admin/contact', routes.contact);
 app.post('/admin/contact', contact.sendemail);
+app.get('/admin/games', checkAuth, routes.games);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Game Points server listening on port ' + app.get('port'));

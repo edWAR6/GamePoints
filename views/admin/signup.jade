@@ -6,8 +6,8 @@ extends adminlayout
 block content
   article#signup.container
     header.hero-unit
-      h1 Registro de usuarios administradores
-      p Complete los siguientes datos personales y acepte los términos y condiciones para aplicar como usuario administrador de Game Points.
+      h1 Registro de socios
+      p Complete los siguientes datos personales y acepte los términos y condiciones para aplicar como usuario socio de Game Points.
     p #{message}
     .clearfix
       section
@@ -17,9 +17,9 @@ block content
           input#password.span4(type='password', placeholder='Contraseña', required, name='person[password]')
           input#phone.span4(type='tel', placeholder='Teléfono', required, value=person.phone, name='person[phone]')
           input#country.span4(type='text', placeholder='País', required, value=user.country, name='user[country]')
-          input#state.span4(type='text', placeholder='Provincia', required, value=user.state, name='user[state]')
-          input#city.span4(type='text', placeholder='Cantón', required, value=user.city, name='user[city]')
-          input#town.span4(type='text', placeholder='Distrito', required, value=user.town, name='user[town]')
+          input#state.span4(type='text', placeholder='Provincia', required, value=user.province_state, name='user[province_state]')
+          input#city.span4(type='text', placeholder='Cantón', required, value=user.canton_city, name='user[canton_city]')
+          input#town.span4(type='text', placeholder='Distrito', required, value=user.district_town, name='user[district_town]')
           input#address.span4(type='text', placeholder='Dirección', required, value=user.address, name='user[address]')
           input#aditionalindications.span4(type='text', placeholder='Indicasiones de entrega', value=user.aditionalindications, name='user[aditionalindications]')
           p Cuentenos sobre usted, su negocio o su colección de video juegos.

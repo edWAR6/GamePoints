@@ -79,15 +79,18 @@ exports.login = function(req, res){
     	};
     } else{
     	// Existing user
-      req.session.person = results[0].person;
-      req.session.user = results[0].user;
-      req.session.administrator = results[0].administrator;
+      req.session.person = { id: results[0].personid, active: results[0].active, complete: results[0].complete, email: results[0].email, name: results[0].name, phone: results[0].phone };
+      req.session.user = { id: results[0].userid, address: results[0].address, aditionalindications: results[0].aditionalindications, canton_city: results[0].canton_city, country: results[0].country, district_town: results[0].district_town, facebookid: results[0].facebookid, googleid: results[0].googleid, points: results[0].points, province_state: results[0].province_state, twitterid: results[0].twitterid };
+      req.session.administrator = { id: results[0].administratorid, type: results[0].type, comment: results[0].comment };
+      console.log('person = ' + JSON.stringify(req.session.person));
+      console.log('user = ' + JSON.stringify(req.session.user));
+      console.log('administrator = ' + JSON.stringify(req.session.administrator));
     	if (results[0].complete == 1) {
     		// Login complete
-    		res.render('admin/games', { title: 'Game points, usuario identificado', user: results[0].user });
+    		res.render('admin/games', { title: 'Game points, bienvenido!', person: req.session.user, user: req.session.user, administrator: req.session.administrator });
     	} else{
     		// Login incomplete
-    		res.render('admin/signup', { title: 'Game points, usuario incompleto', message: 'Por favor complete el registro para poder ingresar.', user: results[0].user });
+    		res.render('admin/signup', { title: 'Game points, usuario incompleto', message: 'Tu usuario aun no es socio, puedes modificar tus datos para reenviar la solicitud.', person: req.session.user, user: req.session.user, administrator: req.session.administrator   });
     	};
     };
   });
@@ -116,16 +119,16 @@ exports.signup = function(req, res){
       var userquery = '';
       getuser(req, (results.insertId == 0 ? person.id : results.insertId), function(req, user, personid){
         if (user) {
-          userquery = 'UPDATE user SET address = "'+ req.body.user.address +'", aditionalindications = "'+ req.body.user.aditionalindications +'", canton_city = "'+ req.body.user.city +'", country = "'+ req.body.user.country +'", district_town = "'+ req.body.user.town +'", facebookid = "'+ sessionuser.facebookid +'", googleid = "'+ sessionuser.googleid +'", province_state = "'+ req.body.user.state +'", twitterid = "'+ sessionuser.twitterid +'" WHERE id = '+ user.id +';';
+          userquery = 'UPDATE user SET address = "'+ req.body.user.address +'", aditionalindications = "'+ req.body.user.aditionalindications +'", canton_city = "'+ req.body.user.canton_city +'", country = "'+ req.body.user.country +'", district_town = "'+ req.body.user.district_town +'", facebookid = "'+ sessionuser.facebookid +'", googleid = "'+ sessionuser.googleid +'", province_state = "'+ req.body.user.province_state +'", twitterid = "'+ sessionuser.twitterid +'" WHERE id = '+ user.id +';';
         } else{
-          userquery = 'INSERT INTO user (address, aditionalindications, canton_city, country, district_town, facebookid, googleid, personid, province_state, twitterid) VALUES ("'+ req.body.user.address +'", "'+ req.body.user.aditionalindications +'", "'+ req.body.user.city +'", "'+ req.body.user.country +'", "'+ req.body.user.town +'", "'+ sessionuser.facebookid +'", "'+ sessionuser.googleid +'", '+ personid +', "'+ req.body.user.state +'", "'+ sessionuser.twitterid +'");';          
+          userquery = 'INSERT INTO user (address, aditionalindications, canton_city, country, district_town, facebookid, googleid, personid, province_state, twitterid) VALUES ("'+ req.body.user.address +'", "'+ req.body.user.aditionalindications +'", "'+ req.body.user.canton_city +'", "'+ req.body.user.country +'", "'+ req.body.user.district_town +'", "'+ sessionuser.facebookid +'", "'+ sessionuser.googleid +'", '+ personid +', "'+ req.body.user.province_state +'", "'+ sessionuser.twitterid +'");';          
         };
         gamepointsDB.connection.query(userquery, function(err, results) {
           if (err) {
             console.log('Error signing user.');
             throw err;
           };
-          req.session.user = user || { address: req.body.user.address, aditionalindications: req.body.user.aditionalindications, city: req.body.user.city, country: req.body.user.country, town: req.body.user.town, facebookid: sessionuser.facebookid, googleid: sessionuser.googleid, state: req.body.user.state, twitterid: sessionuser.twitterid };
+          req.session.user = user || { address: req.body.user.address, aditionalindications: req.body.user.aditionalindications, canton_city: req.body.user.canton_city, country: req.body.user.country, town: req.body.user.district_town, facebookid: sessionuser.facebookid, googleid: sessionuser.googleid, state: req.body.user.province_state, twitterid: sessionuser.twitterid };
           if (req.body.administrator.comment) {
             getadministrator(req, personid, function(req, administrator, personid){
               var administratorquery = '';
@@ -141,7 +144,7 @@ exports.signup = function(req, res){
                   throw err;
                 };
                 req.session.administrator = administrator || { type: "microAdmin", comment: req.body.administrator.comment };
-                res.render('admin/signup', { title: 'Game points, registro de administrador', message: 'Usuario administrador registrado con éxito.', person: req.session.person, user: req.session.user, comment: req.session.administrator });
+                res.render('admin/signup', { title: 'Game points, registro de socio', message: 'Solicitud enviada con éxito.', person: req.session.person, user: req.session.user, administrator: req.session.administrator });
               });
             });
           } else{
