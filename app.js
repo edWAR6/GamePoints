@@ -12,7 +12,7 @@ var express = require('express'),
   http = require('http'),
   path = require('path'),
   passport = require('passport'),
-  localStrategy = require('passport-local').Strategy;
+  LocalStrategy = require('passport-local').Strategy;
 
 var app = express(),
   store = new express.session.MemoryStore;
@@ -35,6 +35,21 @@ app.use(app.router);
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 };
+
+passport.use(new LocalStrategy(
+  function(username, password, done) {
+    User.findOne({ username: username }, function(err, user) {
+      if (err) { return done(err); }
+      if (!user) {
+        return done(null, false, { message: 'Incorrect username.' });
+      }
+      if (!user.validPassword(password)) {
+        return done(null, false, { message: 'Incorrect password.' });
+      }
+      return done(null, user);
+    });
+  }
+));
 
 function checkAuth(req, res, next) {
   if (typeof req.session.user !== "undefined" && req.session.person.active == 1) {
