@@ -10,7 +10,9 @@ var express = require('express'),
   game = require('./routes/game');
   contact = require('./routes/contact');
   http = require('http'),
-  path = require('path');
+  path = require('path'),
+  passport = require('passport'),
+  localStrategy = require('passport-local').Strategy;
 
 var app = express(),
   store = new express.session.MemoryStore;
