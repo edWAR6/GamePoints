@@ -9,6 +9,7 @@ var express = require('express'),
   user = require('./routes/user'),
   game = require('./routes/game');
   contact = require('./routes/contact');
+  admin = require('./routes/admin');
   http = require('http'),
   path = require('path'),
   passport = require('passport'),
@@ -62,19 +63,19 @@ function checkAuth(req, res, next) {
 app.get('/auth/twitter', user.twitter);
 app.get('/auth/twitter/callback', user.twittercallback);
 
-app.get('/', routes.admin);//game.index);
+app.get('/', routes.index);
 
 
-app.get('/admin', routes.admin);
+app.get('/admin', admin.index);
 app.post('/admin/login', user.login);
-app.get('/admin/signup', routes.signup);
+app.get('/admin/signup', admin.signup);
 app.post('/admin/signup', user.signup)
-app.get('/admin/whoweare', routes.whoweare);
-app.get('/admin/howitworks', routes.howitworks);
-app.get('/admin/microprovider', routes.microprovider);
-app.get('/admin/contact', routes.contact);
+app.get('/admin/whoweare', admin.whoweare);
+app.get('/admin/howitworks', admin.howitworks);
+app.get('/admin/microprovider', admin.microprovider);
+app.get('/admin/contact', admin.contact);
 app.post('/admin/contact', contact.sendemail);
-app.get('/admin/games', checkAuth, routes.games);
+app.get('/admin/games', checkAuth, admin.games);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Game Points server listening on port ' + app.get('port'));

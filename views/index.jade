@@ -1,18 +1,27 @@
+//- extends layout
+
+//- block content
+//-   article#home.container
+//-     aside.filter
+//-       h3 filtro
+//-     section.itemsgrid
+//-       h3 grid
+//-       .wrapper
+//-         if games
+//-           each game in games
+//-             article.game 
+//-               p #{game.title}
+//-         else
+//-           p Lo sentimos, no hay juegos disponibles por el momento.
+//-     .clearfix
+
 extends layout
 
 block content
-  article#home.container
-    aside.filter
-      h3 filtro
-    section.itemsgrid
-      h3 grid
-      .wrapper
-        if games
-          each game in games
-            article.game 
-              p #{game.title}
-        else
-          p Lo sentimos, no hay juegos disponibles por el momento.
-    .clearfix
-
-      
+  article
+    p Hola      
+  article
+  .searchbox
+  section
+    article
+    aside

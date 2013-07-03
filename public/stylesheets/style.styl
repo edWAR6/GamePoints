@@ -7,181 +7,51 @@ http://css-tricks.com/snippets/css/media-queries-for-standard-devices/
 */
 
 body
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif
-a
-  color: #00B7FF
-
-.hiden
-  display: none
-
-
-/* ADMIN */
-
-/* Menu */
-
-a.brand
-  color #ffffff !important
-
-a.logins
-  float: right
-
-form.navbar-form.pull-right
-  max-height: 45px
-
-.otherLogins
-  background-color: #000
-  
-a.fb
-  background: url('/images/login-btns.png')
-  display: block
-  height: 43px
-  width: 254px
-a.fb:hover
-  background-position: 0 -43px
-a.fb:active
-  background-position: 0 -86px
-a.tw
-  background: url('/images/login-btns.png')
-  background-position: 0 -129px
-  display: block
-  height: 43px
-  width: 254px
-a.tw:hover
-  background-position: 0 -172px
-a.tw:active
-  background-position: 0 -215px
-a.go
-  background: url('/images/login-btns.png')
-  background-position: 0 -258px
-  display: block
-  height: 43px
-  width: 254px
-a.go:hover
-  background-position: 0 -300px
-a.go:active
-  background-position: 0 -344px
-
-/* Index */
-
-
-/* whoweare */
-article#whoweare section.image
-  text-align: center
-
-article#whoweare section img
-  width: 45%
-
-/* Microprovider */
-article#howitworks .handshake img
-	width: 50%
-
-article#howitworks .gamesstack
-	text-align: right
-
-/* howitworks */
-
-// @media only screen and (min-width: 768px) and (max-width: 1024px)
-// @media only screen and (min-width: 1024px)
-
-
-/* Contact */
-
-@media only screen and (min-width : 481px)
-  article#admingames aside,
-  article#admingames section
-    float left
-    width 50%
-
-article#admingames aside img
-  height: 117px;
-  width: 111px;
-  background url('/images/socialmedia.jpg')
-article#admingames aside img.facebook
-  background-position: -45px -43px
-article#admingames aside img.twitter
-  background-position: -180px -877px
-  margin-left 15px
-article#admingames aside img.google
-  background-position: -312px -3082px
-  margin-left 15px
-
-/* Signup */
-
-article#howitworks img.cart
-  display inline
-  width 5em
-
-#comment
-  max-width: 100%
-
-@media only screen and (min-width: 768px)
-  #signup section
-    float: left
-    width: 57%
-
-  #signup aside
-    float: right
-    width: 43%
-  #comment
-    max-width: 80%
-
-/* CLIENT */
-
-/* Menu */
-
-.smallfilterbtn
-  float left
-
-/* Index */
-
-article.container
-  max-width 84em
-  min-width 20em
-
-aside.filter
-  float none
+  font 14px "Lucida Grande", Helvetica, Arial, sans-serif
+  padding 0
   width 100%
 
-section.itemsgrid
-  float none
+body aside.menu
   width 100%
+  height 379px
+  margin-bottom 2%
+  background-color #E8BC39
 
-article.game
-  margin-left 0
-  background #eee
-  margin-bottom 30px
+body section.main
   width 100%
-  clear none
+  height 1561px
+  margin-bottom 2%
+  background-color #DB2031
 
-@media only screen and (min-width : 481px)
+body footer
+  width 100%
+  height 287px
+  position absolute
+  left 0
+  background-color #131313
 
-  aside.filter
+@media screen and (max-width: 720px)
+  body
+    color: red
+
+@media screen and (min-width: 720px)
+  body aside.menu
     float left
     width 20%
 
-  section.itemsgrid
+  body section.main
     float left
-    width 80%
-
-  article.game
-    float left
-    margin-left 3.2%
-    width 22.6%
-
-  article.game:nth-of-type(4n+1)
-    margin-left 0
-    clear left
-
-@media only screen and (min-width : 481px) and (max-width : 768px)
-  article.game:nth-of-type(4n+1)
-    clear none
-
-  article.game:nth-of-type(3n+1)
-    margin-left 0
-    clear left
+    width 78%
+    margin-left 2%
 
 
+@media screen and (min-width: 720px) AND (max-width: 1024px)
+  body
+    color: blue
 
-@media only screen and (min-width : 979px)
-  body article
-    margin-top 75px
+@media screen and (min-width: 1024px)
+  body
+    width 1000px
+    margin-left auto
+    margin-right auto
+    color: black
