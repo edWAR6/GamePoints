@@ -6,7 +6,7 @@ http://css-tricks.com/snippets/css/media-queries-for-standard-devices/
 
 */
 body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-family: 'Open Sans', sans-serif;
   padding: 0;
   width: 100%;
 }

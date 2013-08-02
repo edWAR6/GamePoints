@@ -1,0 +1,134 @@
+.a,
+.b,
+.c,
+.d,
+.e,
+.f,
+.g,
+.h,
+.i,
+.j,
+.k,
+.l,
+.m,
+.n,
+.o,
+.p,
+.r,
+.s,
+.t,
+.u,
+.v,
+.x {
+  background: url("sprites.png") no-repeat;
+}
+.a {
+  background-position: 0 0;
+  width: 21px;
+  height: 19px;
+}
+.b {
+  background-position: -1px -21px;
+  width: 21px;
+  height: 19px;
+}
+.c {
+  background-position: -29px 0;
+  width: 22px;
+  height: 22px;
+}
+.d {
+  background-position: -29px -27px;
+  width: 22px;
+  height: 22px;
+}
+.e {
+  background-position: -3px -51px;
+  width: 25px;
+  height: 26px;
+}
+.f {
+  background-position: -7px -86px;
+  width: 22px;
+  height: 22px;
+}
+.g {
+  background-position: -59px -4px;
+  width: 12px;
+  height: 11px;
+}
+.h {
+  background-position: -86px -66px;
+  width: 17px;
+  height: 34px;
+}
+.i {
+  background-position: -60px -53px;
+  width: 11px;
+  height: 11px;
+}
+.j {
+  background-position: -36px -54px;
+  width: 11px;
+  height: 11px;
+}
+.k {
+  background-position: -117px -66px;
+  width: 17px;
+  height: 34px;
+}
+.l {
+  background-position: -87px -110px;
+  width: 17px;
+  height: 33px;
+}
+.m {
+  background-position: -60px -71px;
+  width: 10px;
+  height: 11px;
+}
+.n {
+  background-position: -36px -70px;
+  width: 11px;
+  height: 11px;
+}
+.o {
+  background-position: -112px -110px;
+  width: 17px;
+  height: 33px;
+}
+.p {
+  background-position: -58px -30px;
+  width: 10px;
+  height: 7px;
+}
+.r {
+  background-position: -37px -91px;
+  width: 11px;
+  height: 11px;
+}
+.s {
+  background-position: -60px -91px;
+  width: 11px;
+  height: 11px;
+}
+.t {
+  background-position: -79px -3px;
+  width: 26px;
+  height: 51px;
+}
+.u {
+  background-position: -118px -2px;
+  width: 26px;
+  height: 51px;
+}
+.v {
+  background-position: -7px -154px;
+  width: 129px;
+  height: 58px;
+}
+.x {
+  background-position: -9px -122px;
+  width: 17px;
+  height: 17px;
+}
