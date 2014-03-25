@@ -19,6 +19,7 @@
 .t,
 .u,
 .v,
+.w,
 .x {
   background: url("sprites.png") no-repeat;
 }
@@ -126,6 +127,11 @@
   background-position: -7px -154px;
   width: 129px;
   height: 58px;
+}
+.w {
+  background-position: -48px -123.00001525878906px;
+  width: 21px;
+  height: 17px;
 }
 .x {
   background-position: -9px -122px;

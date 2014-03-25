@@ -15,8 +15,9 @@ var express = require('express'),
   passport = require('passport'),
   LocalStrategy = require('passport-local').Strategy;
 
-var app = express(),
-  store = new express.session.MemoryStore;
+var app = express();
+// var app = express(),
+//   store = new express.session.MemoryStore;
 
 // all environments
 app.set('port', process.env.PORT || 3000);
@@ -29,7 +30,9 @@ app.use(express.methodOverride());
 app.use(require('stylus').middleware(__dirname + '/public'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.cookieParser()); 
-app.use(express.session({ secret: 'glorianayara', store: store }));
+app.use(express.session({ secret: 'glorianayara' })); //, store: store 
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(app.router);
 
 // development only
@@ -37,20 +40,20 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 };
 
-passport.use(new LocalStrategy(
-  function(username, password, done) {
-    User.findOne({ username: username }, function(err, user) {
-      if (err) { return done(err); }
-      if (!user) {
-        return done(null, false, { message: 'Incorrect username.' });
-      }
-      if (!user.validPassword(password)) {
-        return done(null, false, { message: 'Incorrect password.' });
-      }
-      return done(null, user);
-    });
-  }
-));
+// passport.use(new LocalStrategy(
+//   function(username, password, done) {
+//     User.findOne({ username: username }, function(err, user) {
+//       if (err) { return done(err); }
+//       if (!user) {
+//         return done(null, false, { message: 'Incorrect username.' });
+//       }
+//       if (!user.validPassword(password)) {
+//         return done(null, false, { message: 'Incorrect password.' });
+//       }
+//       return done(null, user);
+//     });
+//   }
+// ));
 
 function checkAuth(req, res, next) {
   if (typeof req.session.user !== "undefined" && req.session.person.active == 1) {
@@ -60,16 +63,26 @@ function checkAuth(req, res, next) {
   }
 };
 
-app.get('/auth/twitter', user.twitter);
-app.get('/auth/twitter/callback', user.twittercallback);
-
 app.get('/', routes.index);
+app.get('/howitworks', routes.howitworks);
+app.get('/abouth', routes.abouth);
 
+app.post('/login', user.login);
+app.get('/login/facebook', user.facebooklogin);
+app.get('/login/facebook/return', user.facebookloginreturn);
+app.get('/login/twitter', user.twitterlogin);
+app.get('/login/twitter/return', user.twitterloginreturn);
+app.get('/login/google', user.googlelogin);
+app.get('/login/google/return', user.googleloginreturn);
+app.post('/signin', user.signin);
+app.get('/welcome', user.welcome);
+app.get('/tryagain', user.tryagain);
+app.get('/logout', user.logout);
 
 app.get('/admin', admin.index);
-app.post('/admin/login', user.login);
+// app.post('/admin/login', user.loginadministrator);
 app.get('/admin/signup', admin.signup);
-app.post('/admin/signup', user.signup)
+// app.post('/admin/signup', user.signup)
 app.get('/admin/whoweare', admin.whoweare);
 app.get('/admin/howitworks', admin.howitworks);
 app.get('/admin/microprovider', admin.microprovider);

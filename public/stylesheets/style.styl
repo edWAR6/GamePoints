@@ -11,48 +11,426 @@ body
   //font 14px "Lucida Grande", Helvetica, Arial, sans-serif
   padding 0
   width 100%
+  background-color #242424
 
-body aside.menu
+a:hover
+  text-decoration none
+
+// input[type="search"]
+//   -moz-appearance textfield
+//   -webkit-appearance textfield
+//   appearance textfield
+
+input::-webkit-input-placeholder
+  color:    #c81d2d
+input:-moz-placeholder
+  color:    #c81d2d
+input[placeholder], [placeholder], *[placeholder]
+  color:    #c81d2d
+
+/* apply a natural box layout model to all box elements */
+*,
+:before,
+:after,
+input[type="search"]
+  -moz-box-sizing border-box
+  -webkit-box-sizing border-box
+  box-sizing border-box
+
+select
+textarea
+input[type='text']
+input[type='password']
+input[type='datetime']
+input[type='datetime-local']
+input[type='date']
+input[type='month']
+input[type='time']
+input[type='week']
+input[type='number']
+input[type='email']
+input[type='url']
+input[type='search']
+input[type='tel']
+input[type='color']
+input[type='submit']
+.uneditable-input
+  -webkit-border-radius:2px;
+  -moz-border-radius:2px;
+  border-radius:2px;
+  height 36px
+
+label.error
+  position absolute
+
+div.overlay
+  position absolute
+  background-color rgba(0,0,0,0.5)
+  z-index 10
   width 100%
-  height 379px
-  margin-bottom 2%
-  background-color #E8BC39
+  height 100%
+  top 0
+  left 0
 
-body section.main
+aside.menu
+  width 100%
+  margin-bottom 10px
+  background-color #E8BC39
+  color #806620
+  font-weight bold
+  min-width 200px
+aside.menu header
+  text-align center
+  background-color black
+aside.menu nav
+  padding-top 7px
+  background url('/images/sprite/login_topborder.jpg') repeat
+aside.menu nav div
+  line-height 60px
+aside.menu nav .login
+  background-color #e8bb39
+  cursor pointer
+aside.menu nav .login:hover,
+aside.menu nav .login.active
+  background-color #d9ae35
+  color #ffffff
+aside.menu nav div.signin,
+aside.menu nav .howitworks,
+aside.menu nav .abouth
+  background-color #24ac9f
+  color #157067
+  border-top solid #157067 1px
+  cursor pointer
+aside.menu nav div.signin
+  position relative
+  z-index 11
+aside.menu nav div.signin:hover,
+aside.menu nav div.signin.active,
+aside.menu nav .howitworks:hover,
+aside.menu nav .abouth:hover
+  background-color #157067
+  color #ffffff
+aside.menu nav .icon
+  width 21px
+  height 19px
+  display inline-block
+  margin-bottom -3px
+  margin-left 7px
+aside.menu nav .login .icon
+  background url('/images/sprite/login.jpg') no-repeat scroll 0 0 transparent
+aside.menu nav .login:hover .icon,
+aside.menu nav .login.active .icon
+  background url('/images/sprite/login2.jpg') no-repeat scroll 0 0 transparent
+aside.menu nav div.signin .icon
+  width 23px
+  height 23px
+  margin-bottom -5px
+  background url('/images/sprite/signin.jpg') no-repeat scroll 0 0 transparent
+aside.menu nav div.signin:hover .icon,
+aside.menu nav div.signin.active .icon
+  background url('/images/sprite/signin2.jpg') no-repeat scroll 0 0 transparent
+aside.menu nav .howitworks .icon
+  width 28px
+  height 29px
+  background url('/images/sprite/howitworks.jpg') no-repeat scroll 0 0 transparent
+aside.menu nav .howitworks:hover .icon,
+aside.menu nav .howitworks.active .icon
+  background url('/images/sprite/howitworks2.jpg') no-repeat scroll 0 0 transparent
+aside.menu nav .abouth .icon
+  width 24px
+  height 25px
+  background url('/images/sprite/abouth.jpg') no-repeat scroll 0 0 transparent
+aside.menu nav .abouth:hover .icon,
+aside.menu nav .abouth.active .icon
+  background url('/images/sprite/abouth2.jpg') no-repeat scroll 0 0 transparent
+aside.menu nav span
+  padding-left 10px
+aside.menu nav .search
+  // text-align center
+  background-color #db2031
+  margin-top 4px
+  height 60px
+  text-align center
+aside.menu nav .search input
+  margin 0 auto
+  display inline-block
+  width 90%
+  color #c81d2d
+  border 1px #7a121b solid
+  background url("/images/sprite/search.jpg") no-repeat scroll 99% 50% #8C151F
+
+aside.menu section.logincontent
+  display none
+  background-color #E8BB39
+  color #523d01
+aside.menu section.logincontent span
+aside.menu section.logincontent a
+  margin 10px 0
+  display inline-block
+aside.menu section.logincontent span.fullwidth,
+aside.menu section.logincontent a.fullwidth
+  width 100%
+  padding-left 10px
+aside.menu section.logincontent input
+  background-color #d4ab34
+  border 1px solid #b8942d
+  color #ffffff
+  margin auto
+  display block
+  width 90%
+aside.menu section.logincontent a
+  text-decoration underline
+  color #523d01
+aside.menu section.logincontent input.confirm
+  background-color black
+  color #e8bb39
+  height 60px
+  width 100%
+  border 0
+  -webkit-border-radius 0
+  -moz-border-radius 0
+  border-radius 0
+aside.menu section.logincontent form
+  margin-bottom 0
+aside.menu section.logincontent img
+  margin-left 5px  
+
+aside.menu nav .logeduser
+  background-color #e8bb39
+aside.menu nav .logeduser span
+  display block
+  margin 0
+aside.menu nav .logeduser .photo,
+aside.menu nav .logeduser .name,
+aside.menu nav .logeduser .points,
+aside.menu nav .logeduser .buys,
+aside.menu nav .logeduser .sales
+  float left
+  line-height 18px
+aside.menu nav .logeduser .photo
+  border-color #97771c
+  margin 10px
+  border solid 3px #97771c
+  border-radius 40px
+  -moz-border-radius 40px
+  -webkit-border-radius 40px
+  overflow: hidden;
+  width 42px
+aside.menu nav .logeduser .name
+  padding-top 10px
+  max-width 130px
+aside.menu nav .logeduser .name span
+  margin-left 0
+  word-wrap break-word
+  color #ffffff
+aside.menu nav .logeduser .name a
+  text-decoration underline
+  display block
+  color #157067
+aside.menu nav .logeduser .points,
+aside.menu nav .logeduser .buys,
+aside.menu nav .logeduser .sales
+  background-color #b4912d
+  border solid 1px #E8BB39
+  color #E8BB39
+  text-align center
+  width 33.333%
+  height 60px
+  line-height 23px
+  padding-top: 7px;
+aside.menu nav .logeduser span.number
+  font-size 20px
+  font-weight normal
+aside.menu nav .signincontent
+  line-height 30px
+  display none
+  z-index 11
+  position absolute
+aside.menu nav .signincontent header
+  background-color #24ac9f
+  margin-top 5px
+  text-align left
+  height 60px
+aside.menu nav .signincontent header h1,
+aside.menu nav .signincontent header p
+  margin 0 0 0 10px
+  color #000000
+aside.menu nav .signincontent header h1
+  font-size 16px
+  height 30px
+aside.menu nav .signincontent header p
+  font-size 14px
+aside.menu nav .signincontent section
+  background-color #ffffff
+aside.menu nav .signincontent section form
+  margin 0
+aside.menu nav .signincontent section span
+aside.menu nav .signincontent section input
+  width 90%
+  display block
+  margin 0 auto
+  padding 0
+aside.menu nav .signincontent section label.select
+  margin-left 5%
+  width 50%
+  position relative
+aside.menu nav .signincontent section select
+  margin 0 auto
+  outline 0
+  display inline-block
+  -webkit-appearance none
+  -moz-appearance none
+  appearance none
+  cursor pointer
+  width 100%
+aside.menu nav .signincontent section label.select:before
+  content:'';
+  position:absolute;
+  pointer-events:none;
+  display:block;
+aside.menu nav .signincontent section label.select:after
+  content ''
+  width 36px
+  height 36px
+  background url('/images/sprite/select.jpg') no-repeat
+  position absolute
+  pointer-events none
+  right 0
+aside.menu nav .signincontent section span
+  color #000000
+aside.menu nav .signincontent section label.select.birthday
+  display: inline-block;
+  margin-left: 5%;
+  width: 26.7%;
+aside.menu nav .signincontent section div
+  width 100%
+  background-color #eeefef
+  margin-top 10px
+  line-height 30px
+aside.menu nav .signincontent section div span
+aside.menu nav .signincontent section div input
+  margin-left: 5%;
+  width: 42.5%;
+  display inline-block
+aside.menu nav .signincontent form input[type='submit']
+  margin 10px 0 10px 5%
+  border 1px solid #1f958a
+  background-color #24ac9f
+  color #ffffff
+aside.menu nav .signincontent footer
+  background-color #24ac9f
+  height auto
+  position static
+  padding-top 1px
+  padding-bottom 1px
+aside.menu nav .signincontent footer a
+  border 1px solid #0b645b
+  background-color #0c746a
+  color #ffffff
+  display block
+  width 90%
+  margin 10px auto
+  padding-left 10px
+  text-align center
+
+.main
   width 100%
   height 1561px
-  margin-bottom 2%
-  background-color #DB2031
+  margin-bottom 10px
+  background-color #242424
 
-body footer
+.main section.home
+  background-color red
+  height 100%
+footer
   width 100%
   height 287px
   position absolute
   left 0
   background-color #131313
-
-@media screen and (max-width: 720px)
-  body
-    color: red
+footer section
+  min-height 200px
+footer section
+footer section a
+  color #24ac9f
+footer section span
+  font-weight bold
+footer section .logo img
+  margin-left auto
+  margin-right auto
+  display block
+footer section .links
+  text-align center
+footer section .links a
+  display: inline-block;
+  width 50%
+  margin-bottom 20px
+footer section .subscription span
+footer section .subscription p
+  padding-left 5%
+footer section .subscription p
+  font-size 12px
+footer section .subscription form
+  margin 0
+footer section .subscription input
+  display: block;
+  margin: 0 auto;
+  padding: 0;
+  width: 90%;
+footer section .subscription input.confirm
+  background-color: #24AC9F;
+  border: 1px solid #1F958A;
+  color: #FFFFFF;
+  margin-top 5px
+  width 45%
+  margin 5px 5%
+footer footer
+  height 87px
+  line-height 87px
+  background-color #030303
+  text-align center
+  color #8a8a8a
+  position relative
 
 @media screen and (min-width: 720px)
-  body aside.menu
+  aside.menu
     float left
     width 20%
+  aside.menu header
+    text-align: center;
 
-  body section.main
-    float left
-    width 78%
-    margin-left 2%
+  .main
+    padding-left 217px
 
+  section.signincontent
+    margin-left 217px
+    margin-top -60px
+    width 27.7%
+    min-width 290px
+  aside.menu nav .signincontent header
+    margin 0
+  aside.menu nav .signincontent header img
+    display block
+    visibility visible
+    margin-left -9px
+    margin-top 19px
+    position absolute
+  footer section
+    width 1000px
+    margin-left auto
+    margin-right auto
+  footer section div
+    width 33.333%
+    display inline-block
+  footer section div.logo
+    line-height 100px
+  
+    
+  
 
-@media screen and (min-width: 720px) AND (max-width: 1024px)
-  body
-    color: blue
 
 @media screen and (min-width: 1024px)
   body
     width 1000px
     margin-left auto
     margin-right auto
-    color: black

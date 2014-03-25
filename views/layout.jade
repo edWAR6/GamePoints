@@ -13,22 +13,129 @@ html
 
   body
     aside.menu
-      header
-        img(src='images/gamepoints.jpg')
+      a(href='/')
+        header
+          img(src='images/gamepoints.jpg')
       nav
-        .login
+        if !user
+          .login
+            .icon
+            span Ingresar
+          section.logincontent
+            form(method='post', action='/login')
+              span.fullwidth Usuario
+              input(type='text', name='email')
+              span.fullwidth Contraseña
+              input(type='password', name='password')
+              a(href='/').fullwidth ¿Olvidó su contraseña?
+              span Ingresar con:
+              a(href='/login/twitter')
+                img.twitter(src='images/sprite/twitter.jpg')
+              a(href='/login/facebook')
+                img.facebook(src='images/sprite/facebook.jpg')
+              a(href='/login/google')
+                img.google(src='images/sprite/google.jpg')
+              input.confirm(type='submit', value='CONFIRMAR')
+        else
+          .logeduser
+            .photo
+              img(src='#{user.photo}')
+            .name
+              span #{user.name}
+              a(href='/logout') Salir
+            .clearfix
+            .points
+              .arrow
+              span Puntos
+              span.number 0
+            .buys
+              span Compras
+              span.number 0
+            .sales
+              span Ventas
+              span.number 0
+            .clearfix
         .signin
-        .howitworks
-        .abouth
+          .icon
+          span Crear Cuenta
+        section.signincontent
+          header
+            img(src='images/sprite/popup_arrow.png').hidden
+            h1 CREE SU CUENTA
+            p Otros datos puede ingresarlos después.
+          section
+            form.signin(method='post', action='/signin')
+              span Nombre
+              input(type='text', name='name')
+              span Correo electrónico
+              input(type='text', name='email')
+              span Género
+              label.select
+                select(name='gender')
+                  option(selected=true) Seleccionar
+                  option(value='m') Hombre
+                  option(value='f') Mujer
+                  option(value='x') Otro
+              span Cumpleaños
+              label.select.birthday
+                select.year(name='year')
+                  option(selected=true) Año
+              label.select.birthday
+                select.month(name='month')
+                  option(selected=true) Mes
+              label.select.birthday
+                select.day(name='day')
+                  option(selected=true) Día
+              div
+                span Contraseña
+                span Confirmación
+                input(type='password', name='password')
+                input(type='password', name='password_confirm')
+                img(src='images/sprite/check.jpg')
+                input(type='submit', value='CREAR CUENTA')
+          footer
+            a(href='/login/twitter') INGRESAR CON TWITTER
+            a(href='/login/facebook') INGRESAR CON FACEBOOK
+            a(href='/login/google') INGRESAR CON GOOGLE
+        a(href='/howitworks')
+          .howitworks
+            .icon
+            span ¿Cómo Funciona?
+        a(href='/abouth')    
+          .abouth
+            .icon
+            span Sobre Game Points
         .search
-    section.main
+          input.confirm(type='search', placeholder='BUSCAR EN GP')
+    .main
       block content
     .clearfix
     footer
+      section
+        .logo
+          img(src='images/dark-logo.jpg')
+        .links
+          a(href='/abouth')
+            span Acerca de Game Points
+          a(href='/howitworks')
+            span ¿Cómo funciona?
+          span Redes Sociales
+          
+        .subscription
+          span Subscripción
+          p Ingrese su correo electrónico y reciba información y noticias sobre Game Points.
+          form.subscribe(method='post', action='/subscribe')
+            input(type='text', name='email')
+            input.confirm(type='submit', value='ENVIAR')
+      footer
+        span Game Points | San José Costa Rica | (506)12345678 | 
+        | info@gamepointscr.com
     script(src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js")
-    script
+    script.
       window.jQuery || document.write('<script src="javascripts/vendor/jquery-1.9.1.min.js"><\/script>')
-
+    script(src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js")
+    script.
+      $.validator || document.write('<script src="javascripts/vendor/jquery.validate-1.11.1.min.js"><\/script>')
     script(src="../javascripts/vendor/bootstrap.min.js")
     script(src="../javascripts/plugins.js")
     script(src="../javascripts/main.js")
